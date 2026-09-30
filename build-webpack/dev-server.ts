@@ -7,6 +7,7 @@ export const getDevServer = (options: any): DevServerConfiguration => ({
   historyApiFallback: true,
   hot: true,
   port: options.port || Number(process.env.PORT) || 8080,
-  host: options.host || 'localhost',
+  host: options.host || '127.0.0.1',
+  allowedHosts: 'all',
   open: options.open ?? true,
 });

@@ -2,11 +2,9 @@ import { observer } from 'mobx-react-lite';
 import { useCart } from '../lib/useCart';
 import styled from 'styled-components';
 import { Product } from '../../products/api/productsApi.types';
-
 type Props = {
   product: Product;
 };
-
 const ItemCard = styled.div`
   display: flex;
   align-items: center;
@@ -29,7 +27,6 @@ const ItemCard = styled.div`
     gap: 12px;
   }
 `;
-
 const Image = styled.img`
   width: 100px;
   height: 100px;
@@ -38,7 +35,6 @@ const Image = styled.img`
   border: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};
   background-color: ${({ theme }) => theme.color['Background/Background 3']};
 `;
-
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
@@ -53,7 +49,6 @@ const Content = styled.div`
     width: 100%;
   }
 `;
-
 const Title = styled.h3`
   font-size: 16px;
   font-weight: 600;
@@ -65,7 +60,6 @@ const Title = styled.h3`
     width: 100%;
   }
 `;
-
 const Price = styled.p`
   color: ${({ theme }) => theme.color['Primary/Primary 60']};
   font-size: 14px;
@@ -74,7 +68,6 @@ const Price = styled.p`
   min-width: 80px;
   text-align: center;
 `;
-
 const QuantityContainer = styled.div`
   display: flex;
   align-items: center;
@@ -84,7 +77,6 @@ const QuantityContainer = styled.div`
   height: 36px;
   background: ${({ theme }) => theme.color['Background/Background 1']};
 `;
-
 const QuantityBtn = styled.button`
   background: ${({ theme }) => theme.color['Background/Background 1']};
   border: none;
@@ -107,14 +99,12 @@ const QuantityBtn = styled.button`
     cursor: not-allowed;
   }
 `;
-
 const QuantityValue = styled.div`
   padding: 0 12px;
   font-size: 14px;
   font-weight: 500;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 const RemoveButton = styled.button`
   background: none;
   color: ${({ theme }) => theme.color['Error/Error 60']};
@@ -139,13 +129,10 @@ const RemoveButton = styled.button`
     align-self: flex-end;
   }
 `;
-
 export const CartItem = observer(({ product }: Props) => {
   const cart = useCart();
   const item = cart.cartItems.find((p) => p.id === product.id);
-
   if (!item) return null;
-
   return (
     <ItemCard>
       <Image src={product.images[0]} alt={product.title} />

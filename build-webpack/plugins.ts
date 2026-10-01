@@ -20,8 +20,7 @@ export const getPlugins = (options: WebpackOptions, paths: any, isProduction: bo
       systemvars: true,
     }),
     new ForkTsCheckerWebpackPlugin(),
-    new webpack.DefinePlugin({
-    }),
+    new webpack.DefinePlugin({}),
     new webpack.ProgressPlugin(),
     !isProduction && new ReactRefreshWebpackPlugin(),
     options.analyze &&

@@ -1,11 +1,9 @@
 import { Card, Category, Image, Price, Title } from '../products/styles';
 import { Product } from '../../api/productsApi.types';
-
 interface ProductItem {
   onItemClick: (id: number) => void;
   product: Product;
 }
-
 export const ProductItem = ({ product, onItemClick }: ProductItem) => {
   return (
     <Card onClick={() => onItemClick(product.id)} key={product.id}>

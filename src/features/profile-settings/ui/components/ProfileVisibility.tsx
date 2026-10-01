@@ -5,10 +5,8 @@ import {
   SystemDownloadOutline,
   SystemDeleteOutline,
 } from '@admiral-ds/icons';
-
 import { Card, Content, SpanText, StyledButton, SubTitle } from '../styles';
 import { CheckboxBlock } from './CheckboxBlock';
-
 export const ProfileVisibility = () => {
   return (
     <SettingsBlock title="Приватность и видимость" icon={SecuritySafeCertificateSolid}>
@@ -63,7 +61,6 @@ export const ProfileVisibility = () => {
     </SettingsBlock>
   );
 };
-
 const ActionCard = styled(Card)`
   display: flex;
   flex-direction: column;

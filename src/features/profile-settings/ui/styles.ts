@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { Button } from '@admiral-ds/react-ui';
-
 export const PageShell = styled.div`
   max-width: 960px;
   margin: 0 auto;
@@ -8,7 +7,6 @@ export const PageShell = styled.div`
   font-family: 'VTB Group UI', sans-serif;
   text-rendering: geometricPrecision;
 `;
-
 export const StickyHeader = styled.header`
   position: sticky;
   top: 0;
@@ -19,7 +17,6 @@ export const StickyHeader = styled.header`
   border-bottom: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 `;
-
 export const HeaderTopRow = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -28,14 +25,12 @@ export const HeaderTopRow = styled.div`
   gap: 16px;
   margin-bottom: 8px;
 `;
-
 export const PageTitleGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
 `;
-
 export const PageTitle = styled.h1`
   margin: 0;
   font-size: 22px;
@@ -43,7 +38,6 @@ export const PageTitle = styled.h1`
   line-height: 28px;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 export const PageSubtitle = styled.p`
   margin: 0;
   max-width: 520px;
@@ -52,12 +46,10 @@ export const PageSubtitle = styled.p`
   line-height: 20px;
   color: ${({ theme }) => theme.color['Neutral/Neutral 50']};
 `;
-
 export const TabBarWrap = styled.div`
   margin-top: 8px;
   padding-bottom: 4px;
 `;
-
 export const TabHint = styled.p`
   margin: 12px 0 0;
   padding: 10px 14px;
@@ -69,7 +61,6 @@ export const TabHint = styled.p`
   background: ${({ theme }) => theme.color['Neutral/Neutral 05']};
   border: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};
 `;
-
 export const TabContentViewport = styled.div`
   margin-top: 20px;
   min-height: min(420px, 55vh);
@@ -83,54 +74,48 @@ export const TabContentViewport = styled.div`
     max-height: calc(100vh - 240px);
   }
 `;
-
 export const TabSectionStack = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-bottom: 8px;
 `;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
 `;
-
 export const SubTitle = styled.h3`
   margin: 0;
   font-weight: 500;
   font-size: 16px;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 export const SpanText = styled.span`
   color: ${({ theme }) => theme.color['Neutral/Neutral 50']};
   font-size: 14px;
   font-weight: 400;
 `;
-
 export const labelStyles = css`
   font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 export const LegendText = styled.legend`
   ${labelStyles};
   margin-bottom: -8px;
 `;
-
 export const StyledButton = styled(Button)`
   align-self: flex-start;
 `;
-
 export const HeaderSaveButton = styled(Button)`
   flex-shrink: 0;
   min-width: 148px;
 `;
-
-export const Card = styled.div<{ hoverable?: boolean; background?: string }>`
+export const Card = styled.div<{
+  hoverable?: boolean;
+  background?: string;
+}>`
   padding: 24px 32px;
   border-radius: 12px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -142,7 +127,6 @@ export const Card = styled.div<{ hoverable?: boolean; background?: string }>`
 
   ${({ background, theme }) => {
     const bg = background ?? 'Neutral/Neutral 00';
-
     return `
     background: ${theme.color[bg]};
   `;
@@ -157,7 +141,6 @@ export const Card = styled.div<{ hoverable?: boolean; background?: string }>`
     background-color: ${theme.color['Neutral/Neutral 05']};
   }`}
 `;
-
 export const Banner = styled.p`
   padding: 16px;
   margin: 0 0 16px;

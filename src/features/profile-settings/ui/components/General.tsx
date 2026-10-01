@@ -10,13 +10,10 @@ import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
 import { useEffect, useState } from 'react';
 import type { GeneralProps } from '../types';
 import { AvatarPhoto } from './Avatar';
-
 export const General = ({ avatarSrc, onPhotoSelected, onPhotoError }: GeneralProps) => {
   const { register } = useFormContext<SaveSettingsDto>();
   const [preview, setPreview] = useState<string | null>(null);
-
   const displaySrc = preview ?? avatarSrc;
-
   const handlePhoto = (file: File | null) => {
     onPhotoSelected(file);
     if (preview) {
@@ -27,13 +24,11 @@ export const General = ({ avatarSrc, onPhotoSelected, onPhotoError }: GeneralPro
       setPreview(URL.createObjectURL(file));
     }
   };
-
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
-
   return (
     <SettingsBlock title="Профессиональный профиль" icon={SystemPersonSolid}>
       <Content>
@@ -105,7 +100,6 @@ export const General = ({ avatarSrc, onPhotoSelected, onPhotoError }: GeneralPro
     </SettingsBlock>
   );
 };
-
 const InputsBlockWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);

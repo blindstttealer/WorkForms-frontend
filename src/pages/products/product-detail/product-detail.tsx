@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { useCart } from '../../../features/cart/lib/useCart';
 import { Product } from '../../../features/products/api/productsApi.types';
-
 const Container = styled.div`
   margin: 32px auto;
   padding: 16px;
@@ -11,7 +10,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 const ProductWrapper = styled.div`
   background-color: ${({ theme }) => theme.color['Background/Background 2']};
   border-radius: 12px;
@@ -30,7 +28,6 @@ const ProductWrapper = styled.div`
     border-color: ${({ theme }) => theme.color['Primary/Primary 60']};
   }
 `;
-
 const Image = styled.img`
   width: 100%;
   max-width: 300px;
@@ -39,7 +36,6 @@ const Image = styled.img`
   object-fit: cover;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 `;
-
 const Details = styled.div`
   flex: 1;
   min-width: 300px;
@@ -47,22 +43,18 @@ const Details = styled.div`
   flex-direction: column;
   gap: 12px;
 `;
-
 const Title = styled.h2`
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
   margin: 0;
 `;
-
 const Description = styled.p`
   color: ${({ theme }) => theme.color['Neutral/Neutral 70']};
   line-height: 1.6;
   margin: 0;
 `;
-
 const Price = styled.span`
   color: ${({ theme }) => theme.color['Primary/Primary 60']};
 `;
-
 const AddToCartButton = styled.button`
   background-color: ${({ theme }) => theme.color['Primary/Primary 60']};
   border: none;
@@ -87,12 +79,12 @@ const AddToCartButton = styled.button`
     cursor: not-allowed;
   }
 `;
-
 export default function ProductDetail() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{
+    id: string;
+  }>();
   const [product, setProduct] = useState<Product | null>(null);
   const cart = useCart();
-
   useEffect(() => {
     if (id) {
       fetch(`https://dummyjson.com/products/${id}`)
@@ -102,7 +94,6 @@ export default function ProductDetail() {
         });
     }
   }, [id]);
-
   const handleAddToCart = () => {
     if (product) {
       cart.addToCart(product);
@@ -110,9 +101,7 @@ export default function ProductDetail() {
       throw new Error('Product not found');
     }
   };
-
   if (!product) return <div>Loading...</div>;
-
   return (
     <Container>
       <ProductWrapper>

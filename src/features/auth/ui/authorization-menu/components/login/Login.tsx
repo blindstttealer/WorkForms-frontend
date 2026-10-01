@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { InputField } from '@admiral-ds/react-ui';
 import { useNavigate } from 'react-router';
+import { paths } from '@/shared/routes';
 import { useQueryClient } from '@tanstack/react-query';
 import { getUserControllerGetMeQueryKey, useUserControllerLogin } from '@/api/generated/user/user';
+import { useAppToast } from '@/shared/hooks/useAppToast';
+import axios from 'axios';
 import { LoginFormData, loginSchema } from './validationSchema';
 import {
   PageWrapper,
@@ -21,11 +24,11 @@ import {
   SubmitButton,
   GhostButton,
 } from '../../styles';
-
 export const Login: React.FC = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const loginMutation = useUserControllerLogin();
+  const { showErrorToast } = useAppToast();
   const {
     register,
     handleSubmit,
@@ -34,22 +37,22 @@ export const Login: React.FC = () => {
     resolver: yupResolver(loginSchema),
     mode: 'onChange',
   });
-
   const handleLogin = async (values: LoginFormData) => {
     try {
       const data = await loginMutation.mutateAsync({
         data: { login: values.loginOrEmail, password: values.password },
       });
       queryClient.setQueryData(getUserControllerGetMeQueryKey(), data);
-      navigate('/');
+      navigate(paths.home);
     } catch (err) {
-      console.error(err);
+      const message = axios.isAxiosError(err)
+        ? (err.response?.data as { message?: string })?.message || err.message
+        : 'Не удалось войти';
+      showErrorToast(message, 'Ошибка входа');
     }
   };
-
-  const goToForgot = () => navigate('/forgot');
-  const handleBackToRegister = () => navigate('/registration');
-
+  const goToForgot = () => navigate(paths.forgot);
+  const handleBackToRegister = () => navigate(paths.registration);
   return (
     <PageWrapper>
       <FormCard>

@@ -27,7 +27,6 @@ import { PhoneIcon } from '../PhoneIcon';
 import { SendMessageIcon } from '../SendMessageIcon';
 import { Message, Participant } from '../../types';
 import { ChangeEvent, useCallback } from 'react';
-
 interface ChatContentProps {
   activeParticipant: Participant;
   participants: Participant[];
@@ -40,7 +39,6 @@ interface ChatContentProps {
   currentUser: string;
   isDrawerMode?: boolean;
 }
-
 export const ChatContent = ({
   participants,
   activeParticipant,
@@ -55,26 +53,21 @@ export const ChatContent = ({
 }: ChatContentProps) => {
   const handleSetActiveParticipant = useCallback(
     (participant: Participant) => {
-      console.log('participant-', participant);
       setActiveParticipant(participant);
     },
-    [participants],
+    [setActiveParticipant],
   );
-
   const handleOnChangeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
     onChangeInputMessage(event.target.value);
   };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       sendMessage();
     }
   };
-
-  const handleClickSend = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClickSend = () => {
     sendMessage();
   };
-
   return (
     <>
       <Panel>
@@ -149,9 +142,6 @@ export const ChatContent = ({
               <MessagesWindow>
                 {userMessages?.map((msg) => {
                   const isOwn = msg.from === currentUser;
-                  console.log('msg--q-', msg);
-                  console.log('isOwn---', isOwn);
-                  console.log('currentUser---', currentUser);
                   return (
                     <MessageRow key={msg.id} isOwn={isOwn}>
                       {!isOwn && <Avatar size={36}>{msg.from}</Avatar>}

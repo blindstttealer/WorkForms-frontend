@@ -235,6 +235,307 @@
           }
         ]
       }
+    },
+    "/api/form-templates/catalog": {
+      "get": {
+        "operationId": "FormTemplatesController_getCatalog",
+        "summary": "Published form templates for My Forms section",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
+    },
+    "/api/form-templates/mine": {
+      "get": {
+        "operationId": "FormTemplatesController_getMine",
+        "summary": "Current user form templates (constructor)",
+        "parameters": [
+          {
+            "name": "bucket",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "active",
+                "trash"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
+    },
+    "/api/form-templates/by-key/{schemaKey}": {
+      "get": {
+        "operationId": "FormTemplatesController_getByKey",
+        "summary": "Full FormSchema by schema id (FormSchema.id)",
+        "parameters": [
+          {
+            "name": "schemaKey",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateDetailDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
+    },
+    "/api/form-templates/{id}": {
+      "get": {
+        "operationId": "FormTemplatesController_getById",
+        "summary": "Full FormSchema by database id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateDetailDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "FormTemplatesController_update",
+        "summary": "Update form template (author only)",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormTemplateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateDetailDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "FormTemplatesController_remove",
+        "summary": "Soft-delete or permanent delete (trash only)",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "permanent",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
+    },
+    "/api/form-templates": {
+      "post": {
+        "operationId": "FormTemplatesController_create",
+        "summary": "Create form template",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormTemplateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateDetailDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
+    },
+    "/api/form-templates/{id}/lifecycle": {
+      "patch": {
+        "operationId": "FormTemplatesController_updateLifecycle",
+        "summary": "Archive, soft-delete, or restore template",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormTemplateLifecycleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormTemplateDetailDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Form templates"
+        ],
+        "security": [
+          {
+            "cookies": []
+          }
+        ]
+      }
     }
   },
   "info": {
@@ -440,7 +741,7 @@
             "type": "boolean",
             "example": false
           },
-          "careerInsights": {
+          "formsInsights": {
             "type": "boolean",
             "example": true
           }
@@ -449,7 +750,7 @@
           "jobMatches",
           "applicationUpdates",
           "interviewReminders",
-          "careerInsights"
+          "formsInsights"
         ]
       },
       "NotificationsDto": {
@@ -552,6 +853,171 @@
         "required": [
           "user",
           "settings"
+        ]
+      },
+      "FormTemplateListItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "schemaKey": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "object",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ]
+          },
+          "lifecycle": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "ARCHIVED",
+              "DELETED"
+            ]
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "schemaKey",
+          "title",
+          "status",
+          "lifecycle",
+          "updatedAt"
+        ]
+      },
+      "FormTemplateListResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormTemplateListItemDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "FormTemplateDetailDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "schemaKey": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ]
+          },
+          "lifecycle": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "ARCHIVED",
+              "DELETED"
+            ]
+          },
+          "authorId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "FormSchema JSON"
+          }
+        },
+        "required": [
+          "id",
+          "schemaKey",
+          "status",
+          "lifecycle",
+          "authorId",
+          "createdAt",
+          "updatedAt",
+          "schema"
+        ]
+      },
+      "CreateFormTemplateDto": {
+        "type": "object",
+        "properties": {
+          "schema": {
+            "type": "object",
+            "description": "Full FormSchema JSON (constructor-form)",
+            "additionalProperties": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ],
+            "default": "DRAFT"
+          }
+        },
+        "required": [
+          "schema"
+        ]
+      },
+      "UpdateFormTemplateDto": {
+        "type": "object",
+        "properties": {
+          "schema": {
+            "type": "object",
+            "description": "Full FormSchema JSON",
+            "additionalProperties": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PUBLISHED"
+            ]
+          }
+        },
+        "required": [
+          "schema"
+        ]
+      },
+      "UpdateFormTemplateLifecycleDto": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "archive",
+              "softDelete",
+              "restore"
+            ]
+          }
+        },
+        "required": [
+          "action"
         ]
       }
     }

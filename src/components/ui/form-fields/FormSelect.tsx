@@ -1,9 +1,10 @@
 import { forwardRef, type ReactNode } from 'react';
 import { SelectField, Option } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
-export type SelectOption = { label: string; value: string };
-
+export type SelectOption = {
+  label: string;
+  value: string;
+};
 export interface FormSelectProps extends BaseFieldProps {
   value?: string;
   onChange: (value: string) => void;
@@ -12,7 +13,6 @@ export interface FormSelectProps extends BaseFieldProps {
   mode?: 'select' | 'searchSelect';
   renderCustomOption?: (option: SelectOption) => ReactNode;
 }
-
 export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   (
     {
@@ -51,5 +51,4 @@ export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
     </SelectField>
   ),
 );
-
 FormSelect.displayName = 'FormSelect';

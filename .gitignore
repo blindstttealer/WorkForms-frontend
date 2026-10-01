@@ -27,3 +27,12 @@ yarn-error.log*
 
 # webpack bundle analyzer report
 bundle-report.html
+
+# Cursor IDE
+.cursor/
+*.code-workspace
+
+# local docs (not for repo)
+AGENTS.md
+src/features/constructor-form/readme.md
+pipeline/

@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 import React from 'react';
-
 const Wrapper = styled.div`
   position: relative;
   width: 32px;
   height: 32px;
 `;
-
 const StyledIcon = styled.svg`
   width: 100%;
   height: 100%;
   stroke: #333;
 `;
-
 const Badge = styled.div`
   position: absolute;
   top: -6px;
@@ -27,11 +24,9 @@ const Badge = styled.div`
   text-align: center;
   line-height: 1;
 `;
-
 type Props = {
   count?: number;
 };
-
 export const CartIcon: React.FC<Props> = ({ count = 3 }) => {
   return (
     <Wrapper>

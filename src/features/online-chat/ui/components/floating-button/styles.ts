@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-
 export const FloatingIcon = styled.button`
   position: fixed;
   bottom: 28px;

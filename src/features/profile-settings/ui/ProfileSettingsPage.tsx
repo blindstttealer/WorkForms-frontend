@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import {
   CategoryColorSolid,
@@ -40,7 +40,6 @@ import {
   TabHint,
   TabSectionStack,
 } from './styles';
-
 const TAB_ICONS: Record<SettingsTabId, ReactElement> = {
   profile: <SystemPersonSolid width={20} height={20} />,
   work: <CategoryColorSolid width={20} height={20} />,
@@ -48,33 +47,26 @@ const TAB_ICONS: Record<SettingsTabId, ReactElement> = {
   privacy: <SecuritySafeCertificateSolid width={20} height={20} />,
   account: <SystemSettingsSolid width={20} height={20} />,
 };
-
 export const ProfileSettingsPage = () => {
   const queryClient = useQueryClient();
   const { showSuccessToast, showErrorToast } = useAppToast();
   const { data, isError, isLoading } = useSettingsControllerGetSettings();
-
   const saveMutation = useSettingsControllerSaveSettings();
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [activeTab, setActiveTab] = useState<SettingsTabId>('profile');
-
   const methods = useForm<SaveSettingsDto>({
     defaultValues: toFormDefaults(undefined),
   });
-
   const { reset, handleSubmit } = methods;
-
   useEffect(() => {
     if (data) {
       reset(toFormDefaults(data));
       setPhotoFile(null);
     }
   }, [data, reset]);
-
   const handleTabChange = useCallback((tabId: string) => {
     setActiveTab(tabId as SettingsTabId);
   }, []);
-
   const tabItems: TabItem[] = useMemo(
     () =>
       SETTINGS_TABS.map((tab) => ({
@@ -84,11 +76,8 @@ export const ProfileSettingsPage = () => {
       })),
     [],
   );
-
   const activeHint = SETTINGS_TABS.find((tab) => tab.id === activeTab)?.hint ?? '';
-
   const onSubmit = async (values: SaveSettingsDto) => {
-    console.log('values111', values);
     try {
       await saveMutation.mutateAsync({
         data: {
@@ -103,7 +92,6 @@ export const ProfileSettingsPage = () => {
       showErrorToast(formatSettingsSaveError(err), 'Профиль');
     }
   };
-
   if (isError) {
     return (
       <PageShell>
@@ -111,9 +99,7 @@ export const ProfileSettingsPage = () => {
       </PageShell>
     );
   }
-
   const avatarSrc = data?.profile?.photo?.trim();
-
   return (
     <PageShell>
       {isLoading && !data ? <Banner>Загрузка настроек…</Banner> : null}

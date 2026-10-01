@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { paths } from '@/shared/routes';
 import { observer } from 'mobx-react-lite';
-
 import { Container, Grid, ProductsColumn } from './styles';
 import { Product } from '../../api/productsApi.types';
 import { FiltersModal } from '../filters-modal/FiltersModal';
@@ -9,39 +9,28 @@ import { ProductAPI } from '../../api/productsApi';
 import { productsStore } from '../../model/products-store';
 import { Pagination } from '../../../../components/pagination/Pagination';
 import { ProductItem } from '../product-item/ProductItem';
-
 export const Products = observer(() => {
-  /*Компонент по большей части моковый. Будет в последствии заменяться
-  на отображение Резюме/Вакансий и тд
-  
-  */
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const navigate = useNavigate();
   const [totalElements, setTotalElements] = useState<number>();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-
   const loadProducts = async (params?: { skip: number; limit: number }) => {
     await ProductAPI.fetchProducts(params).then((response) => {
       setTotalElements(response.total);
       productsStore.setAllProducts(response?.products || []);
     });
   };
-
-  // useEffect(() => {
-  //   const skip = (page - 1) * pageSize;
-  //   loadProducts({ limit: pageSize, skip });
-  // }, [page, pageSize]);
-
+  useEffect(() => {
+    void loadProducts({ skip: (page - 1) * pageSize, limit: pageSize });
+  }, [page, pageSize]);
   const onClickNavigateProductDetails = (id: number) => {
-    navigate(`/products/${id}`);
+    navigate(paths.products.detail(id));
   };
-
   const handleApplyFilters = (filters: Product[]) => {
     productsStore.setFilteredProducts(filters);
     setIsFilterOpen(false);
   };
-
   return (
     <Container>
       <div onClick={() => setIsFilterOpen(true)}>ОТКРЫТЬ ФИЛЬТРЫ</div>

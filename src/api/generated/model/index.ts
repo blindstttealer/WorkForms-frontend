@@ -10,6 +10,21 @@ Auth: session cookies (not Bearer header). After login/register, the browser sto
  */
 
 export * from './accountDto';
+export * from './createFormTemplateDto';
+export * from './createFormTemplateDtoSchema';
+export * from './createFormTemplateDtoStatus';
+export * from './formTemplateDetailDto';
+export * from './formTemplateDetailDtoLifecycle';
+export * from './formTemplateDetailDtoSchema';
+export * from './formTemplateDetailDtoStatus';
+export * from './formTemplateListItemDto';
+export * from './formTemplateListItemDtoDescription';
+export * from './formTemplateListItemDtoLifecycle';
+export * from './formTemplateListItemDtoStatus';
+export * from './formTemplateListResponseDto';
+export * from './formTemplatesControllerGetMineBucket';
+export * from './formTemplatesControllerGetMineParams';
+export * from './formTemplatesControllerRemoveParams';
 export * from './jobPreferencesDto';
 export * from './loginUserDto';
 export * from './notificationAlertsDto';
@@ -21,5 +36,10 @@ export * from './registerUserDto';
 export * from './registerUserResponseDto';
 export * from './saveSettingsDto';
 export * from './settingsControllerSaveSettingsBody';
+export * from './updateFormTemplateDto';
+export * from './updateFormTemplateDtoSchema';
+export * from './updateFormTemplateDtoStatus';
+export * from './updateFormTemplateLifecycleDto';
+export * from './updateFormTemplateLifecycleDtoAction';
 export * from './userProfileResponseDto';
 export * from './userPublicResponseDto';

@@ -1,5 +1,4 @@
 import type { CheckboxOptionItem, SelectOptionItem, SettingsTabId } from './types';
-
 export const skillsOptions: CheckboxOptionItem[] = [
   { id: '1', value: 'JavaScript' },
   { id: '2', value: 'Python' },
@@ -11,7 +10,6 @@ export const skillsOptions: CheckboxOptionItem[] = [
   { id: '8', value: 'Анализ данных' },
   { id: '9', value: 'Маркетинг' },
 ];
-
 export const employmentTypesOptions: CheckboxOptionItem[] = [
   { id: '1', value: 'Полная занятость' },
   { id: '2', value: 'Частичная занятость' },
@@ -19,7 +17,6 @@ export const employmentTypesOptions: CheckboxOptionItem[] = [
   { id: '4', value: 'Фриланс' },
   { id: '5', value: 'Стажировка' },
 ];
-
 export const preferredIndustriesOptions: CheckboxOptionItem[] = [
   { id: '1', value: 'Технологии' },
   { id: '2', value: 'Здравоохранение' },
@@ -32,7 +29,6 @@ export const preferredIndustriesOptions: CheckboxOptionItem[] = [
   { id: '9', value: 'Гостиничный бизнес' },
   { id: '10', value: 'Консалтинг' },
 ];
-
 export const experienceOptions: SelectOptionItem[] = [
   { value: '0-1', label: '0-1 год' },
   { value: '1-3', label: '1-3 года' },
@@ -40,33 +36,26 @@ export const experienceOptions: SelectOptionItem[] = [
   { value: '5-10', label: '5-10 лет' },
   { value: '10+', label: '10+ лет' },
 ];
-
 export const locationOptions: SelectOptionItem[] = [
   { value: 'Moscow', label: 'Moscow' },
   { value: 'Saint-Petersburg', label: 'Saint-Petersburg' },
   { value: 'Omsk', label: 'Omsk' },
 ];
-
-/** Значения `jobPreferences.workLocation` */
 export const workLocationOptions: SelectOptionItem[] = [
   { value: 'remote', label: 'Только удаленно' },
   { value: 'office', label: 'Только в офисе' },
   { value: 'hybrid', label: 'Гибридный формат' },
 ];
-
-/** Значения `account.language` */
 export const languageOptions: SelectOptionItem[] = [
   { value: 'ru', label: 'Русский' },
   { value: 'en', label: 'English' },
   { value: 'es', label: 'Español' },
 ];
-
 export type SettingsTabMeta = {
   id: SettingsTabId;
   text: string;
   hint: string;
 };
-
 export const SETTINGS_TABS: readonly SettingsTabMeta[] = [
   {
     id: 'profile',

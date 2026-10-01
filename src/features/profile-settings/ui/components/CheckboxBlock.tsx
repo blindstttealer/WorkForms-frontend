@@ -3,17 +3,14 @@ import { CheckboxField } from '@admiral-ds/react-ui';
 import styled from 'styled-components';
 import { Controller, useFormContext, type FieldPath } from 'react-hook-form';
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
-
 type Props = {
   title: string;
   description?: string;
   name: FieldPath<SaveSettingsDto>;
   background?: string;
 };
-
 export const CheckboxBlock = ({ title, description, name, background }: Props) => {
   const { control } = useFormContext<SaveSettingsDto>();
-
   return (
     <CheckboxWrapper background={background}>
       <div>
@@ -33,7 +30,6 @@ export const CheckboxBlock = ({ title, description, name, background }: Props) =
     </CheckboxWrapper>
   );
 };
-
 const CheckboxWrapper = styled(Card)`
   display: flex;
   align-items: center;

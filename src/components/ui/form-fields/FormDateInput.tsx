@@ -1,14 +1,12 @@
 import { forwardRef } from 'react';
 import { DateField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormDateInputProps extends BaseFieldProps {
   value: string;
   onChange: (value: string) => void;
   type?: 'date' | 'date-range';
   placeholder?: string;
 }
-
 export const FormDateInput = forwardRef<HTMLInputElement, FormDateInputProps>(
   (
     {
@@ -42,5 +40,4 @@ export const FormDateInput = forwardRef<HTMLInputElement, FormDateInputProps>(
     />
   ),
 );
-
 FormDateInput.displayName = 'FormDateInput';

@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { NumberInputField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormNumberInputProps extends BaseFieldProps {
   value: string;
   onChange: (value: string) => void;
@@ -13,7 +12,6 @@ export interface FormNumberInputProps extends BaseFieldProps {
   suffix?: string;
   prefix?: string;
 }
-
 export const FormNumberInput = forwardRef<HTMLInputElement, FormNumberInputProps>(
   (
     {
@@ -57,5 +55,4 @@ export const FormNumberInput = forwardRef<HTMLInputElement, FormNumberInputProps
     />
   ),
 );
-
 FormNumberInput.displayName = 'FormNumberInput';

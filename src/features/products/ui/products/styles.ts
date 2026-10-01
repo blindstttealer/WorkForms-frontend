@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -13,12 +12,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 export const ProductsColumn = styled.div`
   flex: 1;
   padding: 1rem;
 `;
-
 export const Card = styled.div`
   background-color: ${({ theme }) => theme.color['Background/Background 1']};
   border-radius: 16px;
@@ -34,7 +31,6 @@ export const Card = styled.div`
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 `;
-
 export const Image = styled.img`
   width: 100%;
   object-fit: contain;
@@ -42,18 +38,15 @@ export const Image = styled.img`
   border-radius: 12px;
   margin-bottom: 1rem;
 `;
-
 export const Title = styled.h3`
   font-size: 1.1rem;
   margin: 0 0 0.5rem;
 `;
-
 export const Price = styled.span`
   font-weight: bold;
   color: #2a9d8f;
   font-size: 1rem;
 `;
-
 export const Category = styled.span`
   font-size: 0.9rem;
   color: #666;

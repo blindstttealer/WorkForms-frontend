@@ -1,22 +1,22 @@
 import { CheckboxField, FieldSet } from '@admiral-ds/react-ui';
 import styled from 'styled-components';
 import { css } from 'styled-components';
-
 const labelStyles = css`
   font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 const LegendText = styled.legend`
   ${labelStyles};
   margin-bottom: -8px;
 `;
-
 type Props = {
   title: string;
   name: string;
-  data: { id: string; value: string }[];
+  data: {
+    id: string;
+    value: string;
+  }[];
 };
 export const CheckboxGroup = ({ title, name, data }: Props) => {
   return (
@@ -28,7 +28,6 @@ export const CheckboxGroup = ({ title, name, data }: Props) => {
     </FieldSet>
   );
 };
-
 const StyledCheckboxField = styled(CheckboxField)`
   align-items: center;
   border: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};

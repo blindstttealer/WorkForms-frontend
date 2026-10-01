@@ -1,20 +1,18 @@
-export const saveToLocalStorage = (key: string, payload: any) => {
+export const saveToLocalStorage = (key: string, payload: unknown) => {
   try {
     const raw = JSON.stringify(payload);
     localStorage.setItem(key, raw);
-  } catch (e) {
-    // fail silently (could also log)
-    // console.warn("lsSave error", e);
+  } catch {
+    void 0;
   }
 };
 
-export const getFromLocalStorage = <T = any>(key: string): T | null => {
+export const getFromLocalStorage = <T = unknown>(key: string): T | null => {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
     return JSON.parse(raw) as T;
-  } catch (e) {
-    // console.warn("lsLoad error", e);
+  } catch {
     return null;
   }
 };
@@ -22,8 +20,7 @@ export const getFromLocalStorage = <T = any>(key: string): T | null => {
 export const removeFromLocalStorage = (key: string) => {
   try {
     localStorage.removeItem(key);
-  } catch (e) {
-    // fail silently
-    // console.warn("lsRemove error", e);
+  } catch {
+    void 0;
   }
 };

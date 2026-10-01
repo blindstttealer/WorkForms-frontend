@@ -7,10 +7,8 @@ import { CheckboxBlock } from './CheckboxBlock';
 import { Controller, useFormContext } from 'react-hook-form';
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
 import { SettingsNotificationsDtoNotificationStyle } from '@/api/generated/model/settingsNotificationsDtoNotificationStyle';
-
 export const Notifications = () => {
   const { control } = useFormContext<SaveSettingsDto>();
-
   return (
     <SettingsBlock title="Настройки уведомлений" icon={SystemNotificationsSolid}>
       <Content>
@@ -35,9 +33,9 @@ export const Notifications = () => {
         />
 
         <CheckboxBlock
-          title="Карьерные инсайты"
-          description="Получать советы и тренды в индустрии"
-          name="notifications.alerts.careerInsights"
+          title="Обновления по формам"
+          description="Получать уведомления о новых шаблонах и изменениях в ваших формах"
+          name="notifications.alerts.formsInsights"
         />
 
         <Controller
@@ -86,11 +84,9 @@ export const Notifications = () => {
     </SettingsBlock>
   );
 };
-
 const NotificationWrapper = styled(Card)`
   background: ${({ theme }) => theme.color['Neutral/Neutral 05']};
 `;
-
 const StyledRadioButton = styled(RadioButton)`
   align-items: center;
   gap: 5px;

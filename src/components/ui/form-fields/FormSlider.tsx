@@ -1,7 +1,6 @@
 import { forwardRef, useCallback } from 'react';
 import { SliderInputField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormSliderProps extends BaseFieldProps {
   value: number;
   onChange: (value: number) => void;
@@ -13,7 +12,6 @@ export interface FormSliderProps extends BaseFieldProps {
   prefix?: string;
   placeholder?: string;
 }
-
 export const FormSlider = forwardRef<HTMLInputElement, FormSliderProps>(
   (
     {
@@ -43,7 +41,6 @@ export const FormSlider = forwardRef<HTMLInputElement, FormSliderProps>(
       },
       [onChange, minValue],
     );
-
     return (
       <SliderInputField
         ref={ref}
@@ -67,5 +64,4 @@ export const FormSlider = forwardRef<HTMLInputElement, FormSliderProps>(
     );
   },
 );
-
 FormSlider.displayName = 'FormSlider';

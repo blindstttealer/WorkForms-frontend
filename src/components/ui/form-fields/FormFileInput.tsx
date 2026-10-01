@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { FileInputField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormFileInputProps extends BaseFieldProps {
   onChange: (files: File[]) => void;
   title?: string;
@@ -9,7 +8,6 @@ export interface FormFileInputProps extends BaseFieldProps {
   multiple?: boolean;
   dimension?: 'xl' | 'm';
 }
-
 export const FormFileInput = forwardRef<HTMLInputElement, FormFileInputProps>(
   (
     {
@@ -46,5 +44,4 @@ export const FormFileInput = forwardRef<HTMLInputElement, FormFileInputProps>(
     />
   ),
 );
-
 FormFileInput.displayName = 'FormFileInput';

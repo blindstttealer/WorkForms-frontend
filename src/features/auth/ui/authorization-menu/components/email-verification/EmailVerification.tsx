@@ -1,65 +1,56 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { paths } from '@/shared/routes';
 import { Button, T } from '@admiral-ds/react-ui';
 import { httpClient } from '@/shared/api/httpClient';
+import axios from 'axios';
 import { Center, Wrapper } from './styles';
 import { getTokenFromSearch } from './utils';
 import { Status } from './types';
-
 export const EmailVerification = () => {
   const location = useLocation();
-
   const navigate = useNavigate();
-
   const token = useMemo(() => getTokenFromSearch(location.search), [location.search]);
-
   const [status, setStatus] = useState<Status>('loading');
-
   const [message, setMessage] = useState<string>('');
-
   const [email, setEmail] = useState<string | null>(null);
-
   const [resendLoading, setResendLoading] = useState(false);
-
   const [resendMessage, setResendMessage] = useState<string | null>(null);
-
   useEffect(() => {
     if (!token) {
       setStatus('error');
       setMessage('Отсутствует токен подтверждения в ссылке.');
       return;
     }
-
     const confirmEmail = async () => {
       try {
         const resp = await httpClient.post('/auth/confirmVerification', { token });
         const data = resp?.data ?? resp;
-
         setStatus('success');
         setMessage(data?.message || 'Email успешно подтверждён.');
-      } catch (err: any) {
-        const code = err?.response?.data?.code;
-        setEmail(err?.response?.data?.email || null);
-
+      } catch (err: unknown) {
+        const data = axios.isAxiosError(err)
+          ? (err.response?.data as { code?: string; message?: string; email?: string })
+          : undefined;
+        const code = data?.code;
+        setEmail(data?.email || null);
         switch (code) {
           case 'expired':
             setStatus('expired');
-            setMessage(err?.response?.data?.message || 'Срок действия ссылки подтверждения истёк.');
+            setMessage(data?.message || 'Срок действия ссылки подтверждения истёк.');
             break;
           case 'already_confirmed':
             setStatus('already_confirmed');
-            setMessage(err?.response?.data?.message || 'Email уже подтверждён.');
+            setMessage(data?.message || 'Email уже подтверждён.');
             break;
           default:
             setStatus('error');
-            setMessage(err?.response?.data?.message || 'Не удалось подтвердить email.');
+            setMessage(data?.message || 'Не удалось подтвердить email.');
         }
       }
     };
-
     confirmEmail();
   }, [token, navigate]);
-
   const handleResend = async () => {
     if (!email) {
       setResendMessage(
@@ -67,22 +58,24 @@ export const EmailVerification = () => {
       );
       return;
     }
-
     setResendLoading(true);
     setResendMessage(null);
-
     try {
       await httpClient.post('/auth/resend-confirmation', { email });
       setResendMessage('Письмо с подтверждением отправлено повторно. Проверьте почту.');
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const data = axios.isAxiosError(err)
+        ? (err.response?.data as { message?: string })
+        : undefined;
       const respMsg =
-        err?.response?.data?.message || err?.message || 'Не удалось отправить письмо повторно.';
+        data?.message ||
+        (err instanceof Error ? err.message : undefined) ||
+        'Не удалось отправить письмо повторно.';
       setResendMessage(respMsg);
     } finally {
       setResendLoading(false);
     }
   };
-
   return (
     <Wrapper>
       <Center>
@@ -93,10 +86,10 @@ export const EmailVerification = () => {
             <T font="Body/Body 1 Short">Email подтверждён</T>
             <T font="Body/Body 1 Short">{message}</T>
             <div style={{ display: 'flex', gap: 12 }}>
-              <Button appearance="primary" onClick={() => navigate('/login')}>
+              <Button appearance="primary" onClick={() => navigate(paths.login)}>
                 Перейти к входу
               </Button>
-              <Button appearance="secondary" onClick={() => navigate('/')}>
+              <Button appearance="secondary" onClick={() => navigate(paths.home)}>
                 На главную
               </Button>
             </div>
@@ -107,7 +100,7 @@ export const EmailVerification = () => {
           <>
             <T font="Body/Body 1 Short">Email уже подтверждён</T>
             <T font="Body/Body 1 Short">{message}</T>
-            <Button appearance="primary" onClick={() => navigate('/login')}>
+            <Button appearance="primary" onClick={() => navigate(paths.login)}>
               Войти
             </Button>
           </>
@@ -122,7 +115,7 @@ export const EmailVerification = () => {
               <Button appearance="secondary" onClick={handleResend} disabled={resendLoading}>
                 {resendLoading ? 'Отправка...' : 'Отправить письмо снова'}
               </Button>
-              <Button appearance="primary" onClick={() => navigate('/login')}>
+              <Button appearance="primary" onClick={() => navigate(paths.login)}>
                 Войти
               </Button>
             </div>
@@ -133,7 +126,7 @@ export const EmailVerification = () => {
           <>
             <T font="Body/Body 1 Short">Ошибка подтверждения</T>
             <T font="Body/Body 1 Short">{message}</T>
-            <Button appearance="secondary" onClick={() => navigate('/support')}>
+            <Button appearance="secondary" onClick={() => navigate(paths.support)}>
               Связаться с поддержкой
             </Button>
           </>

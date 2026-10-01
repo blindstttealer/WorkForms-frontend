@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-
 export const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
@@ -10,7 +9,6 @@ export const ModalOverlay = styled.div`
   z-index: 9999;
   backdrop-filter: blur(4px);
 `;
-
 export const ModalCard = styled.div`
   width: 480px;
   max-width: calc(100% - 40px);
@@ -22,7 +20,6 @@ export const ModalCard = styled.div`
   flex-direction: column;
   gap: 14px;
 `;
-
 export const ChatHeader = styled.div`
   display: flex;
   align-items: center;

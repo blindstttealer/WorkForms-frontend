@@ -1,9 +1,7 @@
 import { DefaultToastItem, ToastItemWithAutoDelete, useToast } from '@admiral-ds/react-ui';
 import { v4 as uuidv4 } from 'uuid';
-
 export const useAppToast = () => {
   const { addToastItem, removeToastItem } = useToast();
-
   const showToast = (
     message: string,
     options?: {
@@ -35,7 +33,6 @@ export const useAppToast = () => {
     };
     addToastItem({ id: toastId, renderToast });
   };
-
   return {
     showErrorToast: (msg: string, title?: string) => showToast(msg, { status: 'error', title }),
     showSuccessToast: (msg: string, title?: string) => showToast(msg, { status: 'success', title }),

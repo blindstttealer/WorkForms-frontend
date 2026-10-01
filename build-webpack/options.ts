@@ -17,7 +17,6 @@ export interface WebpackOptions {
   stats?: boolean | 'verbose' | 'minimal' | 'normal' | 'detailed';
   aliases?: Record<string, string>;
 }
-
 export const getDefaultOptions = (): WebpackOptions => ({
   mode: 'development',
   rootDir: process.cwd(),
@@ -27,7 +26,7 @@ export const getDefaultOptions = (): WebpackOptions => ({
   entry: './index.tsx',
   template: './index.html',
   port: 4000,
-  host: 'localhost',
+  host: '127.0.0.1',
   sourcemap: true,
   minify: true,
   open: true,

@@ -1,13 +1,5 @@
 import { InputField } from '@admiral-ds/react-ui';
 import { keyframes, styled } from 'styled-components';
-
-// export const StyledDrawer = styled(Drawer)`
-//   position: fixed;
-//   top: 0;
-//   height: 100vh;
-//   z-index: 20000;
-// `;
-
 export const Panel = styled.div`
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -15,7 +7,6 @@ export const Panel = styled.div`
   min-height: 0;
   gap: 0;
 `;
-
 export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
@@ -25,11 +16,9 @@ export const Sidebar = styled.aside`
   background: linear-gradient(180deg, rgba(250, 250, 252, 0.92), rgba(245, 246, 250, 0.92));
   min-height: 0;
 `;
-
 export const Search = styled.div`
   padding: 6px 0 2px;
 `;
-
 export const UsersList = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,8 +27,9 @@ export const UsersList = styled.div`
   padding-right: 6px;
   min-height: 0;
 `;
-
-export const UserContainer = styled.button<{ active?: boolean }>`
+export const UserContainer = styled.button<{
+  active?: boolean;
+}>`
   display: flex;
   gap: 12px;
   align-items: center;
@@ -59,8 +49,9 @@ export const UserContainer = styled.button<{ active?: boolean }>`
     background: rgba(0, 0, 0, 0.03);
   }
 `;
-
-export const Avatar = styled.div<{ size?: number }>`
+export const Avatar = styled.div<{
+  size?: number;
+}>`
   width: ${({ size }) => size ?? 48}px;
   height: ${({ size }) => size ?? 48}px;
   border-radius: 12px;
@@ -74,14 +65,12 @@ export const Avatar = styled.div<{ size?: number }>`
   flex: 0 0 auto;
   box-shadow: 0 6px 18px rgba(9, 20, 40, 0.06);
 `;
-
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
   min-width: 0;
 `;
-
 export const UserName = styled.div`
   font-size: 14px;
   font-weight: 700;
@@ -90,7 +79,6 @@ export const UserName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-
 export const UserSnippet = styled.div`
   font-size: 13px;
   color: #697386;
@@ -98,14 +86,14 @@ export const UserSnippet = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-
-export const RightColumn = styled.section<{ $isDrawerMode: boolean }>`
+export const RightColumn = styled.section<{
+  $isDrawerMode: boolean;
+}>`
   display: flex;
   flex-direction: column;
   min-height: 0;
   width: ${({ $isDrawerMode }) => ($isDrawerMode ? '300px' : undefined)};
 `;
-
 export const ChatHeader = styled.div`
   display: flex;
   align-items: center;
@@ -114,17 +102,14 @@ export const ChatHeader = styled.div`
   border-bottom: 1px solid rgba(18, 39, 63, 0.06);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(250, 251, 253, 0.6));
 `;
-
 export const HeaderMeta = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 export const Status = styled.div`
   font-size: 13px;
   color: #1f6feb;
 `;
-
 export const UsersGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -134,7 +119,6 @@ export const UsersGrid = styled.div`
   min-height: 0;
   max-height: 220px;
 `;
-
 export const MessagesWindow = styled.div`
   padding: 18px;
   overflow-y: auto;
@@ -144,15 +128,17 @@ export const MessagesWindow = styled.div`
   min-height: 0;
   background: linear-gradient(180deg, #ffffff, #fbfcff);
 `;
-
-export const MessageRow = styled.div<{ isOwn?: boolean }>`
+export const MessageRow = styled.div<{
+  isOwn?: boolean;
+}>`
   display: flex;
   gap: 12px;
   align-items: flex-end;
   justify-content: ${({ isOwn }) => (isOwn ? 'flex-end' : 'flex-start')};
 `;
-
-export const MessageBubble = styled.div<{ isOwn?: boolean }>`
+export const MessageBubble = styled.div<{
+  isOwn?: boolean;
+}>`
   position: relative;
   padding: 12px 14px;
   border-radius: 14px;
@@ -164,14 +150,12 @@ export const MessageBubble = styled.div<{ isOwn?: boolean }>`
   line-height: 1.4;
   box-shadow: 0 6px 18px rgba(12, 20, 40, 0.06);
 `;
-
 export const Meta = styled.div`
   font-size: 11px;
   color: #91a0b4;
   margin-top: 6px;
   text-align: left;
 `;
-
 export const Composer = styled.div`
   display: flex;
   gap: 10px;
@@ -180,13 +164,11 @@ export const Composer = styled.div`
   border-top: 1px solid rgba(18, 39, 63, 0.04);
   background: linear-gradient(180deg, #fff, #fbfcff);
 `;
-
 export const EmptyState = styled.div`
   padding: 24px;
   color: #697386;
   text-align: center;
 `;
-
 export const StyledInput = styled(InputField)`
   display: block;
   flex: 1;
@@ -207,12 +189,10 @@ export const StyledInput = styled(InputField)`
     transform: translateY(-1px);
   }
 `;
-
 export const fade = keyframes`
   from { opacity: 0; transform: translateY(8px) scale(.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 `;
-
 export const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
@@ -223,7 +203,6 @@ export const ModalOverlay = styled.div`
   z-index: 9999;
   backdrop-filter: blur(4px);
 `;
-
 export const ModalCard = styled.div`
   width: 480px;
   max-width: calc(100% - 40px);
@@ -236,26 +215,24 @@ export const ModalCard = styled.div`
   flex-direction: column;
   gap: 14px;
 `;
-
 export const ModalHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
 `;
-
 export const ModalTitle = styled.h3`
   margin: 0;
   font-size: 18px;
   font-weight: 700;
 `;
-
 export const ModalBody = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
 `;
-
-export const VideoPreview = styled.div<{ active?: boolean }>`
+export const VideoPreview = styled.div<{
+  active?: boolean;
+}>`
   width: 160px;
   height: 110px;
   border-radius: 10px;
@@ -268,14 +245,12 @@ export const VideoPreview = styled.div<{ active?: boolean }>`
   font-size: 13px;
   overflow: hidden;
 `;
-
 export const ModalInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
   min-width: 0;
 `;
-
 export const ModalActions = styled.div`
   display: flex;
   gap: 8px;

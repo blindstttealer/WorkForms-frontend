@@ -13,5 +13,5 @@ export interface NotificationAlertsDto {
   jobMatches: boolean;
   applicationUpdates: boolean;
   interviewReminders: boolean;
-  careerInsights: boolean;
+  formsInsights: boolean;
 }

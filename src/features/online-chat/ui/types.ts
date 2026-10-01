@@ -12,10 +12,13 @@ export interface Participant {
   lastMessage?: string;
   unread?: number;
 }
+export type ChatCurrentUser = {
+  id: string;
+};
+
 export interface ChatDrawerProps {
-  currentUser: any;
+  currentUser?: ChatCurrentUser | null;
   chatIcon?: React.ReactNode;
   drawerContainerRef: HTMLDivElement | null;
 }
-
 export type ChatModeType = 'modal' | 'drawer';

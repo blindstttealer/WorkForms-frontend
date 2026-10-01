@@ -1,23 +1,17 @@
 import { useNavigate, useLocation } from 'react-router';
-import { useCart } from '../../features/cart/lib/useCart';
-import { CartIcon } from '../ui/cart';
+import { matchesNavTab, paths } from '@/shared/routes';
 import { HorizontalTabs, TabItem } from '../ui/tab-menu/TabMenu';
-
 export const NavigationPanel = () => {
-  const cart = useCart();
   const navigate = useNavigate();
   const location = useLocation();
-
   const tabs: TabItem[] = [
-    { text: 'Акции', tabId: '/promotion' },
-    { text: 'Карьера', tabId: '/careers' },
-    { text: 'Доставка', tabId: '/delivery' },
-    { text: 'О нас', tabId: '/about' },
-    { text: 'Конструктор форм', tabId: '/form-constructor' },
+    { text: 'Акции', tabId: paths.promotion },
+    { text: 'Мои формы', tabId: paths.myForms.index },
+    { text: 'Доставка', tabId: paths.delivery },
+    { text: 'О нас', tabId: paths.about },
+    { text: 'Конструктор форм', tabId: paths.formConstructor },
   ];
-
-  const currentTabId = tabs.find((tab) => tab.tabId === location.pathname)?.tabId;
-
+  const currentTabId = tabs.find((tab) => matchesNavTab(location.pathname, tab.tabId))?.tabId;
   return (
     <HorizontalTabs
       tabs={tabs}

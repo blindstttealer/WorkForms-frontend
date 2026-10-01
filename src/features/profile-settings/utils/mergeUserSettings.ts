@@ -1,7 +1,6 @@
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
 import type { UserSettingsResponse } from '@/api/generated/model/userSettingsResponse';
 import { SettingsNotificationsDtoNotificationStyle } from '@/api/generated/model/settingsNotificationsDtoNotificationStyle';
-
 const defaultProfileSettings: SaveSettingsDto = {
   profile: {
     name: '',
@@ -25,7 +24,7 @@ const defaultProfileSettings: SaveSettingsDto = {
       jobMatches: false,
       applicationUpdates: false,
       interviewReminders: false,
-      careerInsights: false,
+      formsInsights: false,
     },
     notificationStyle: SettingsNotificationsDtoNotificationStyle.both,
   },
@@ -39,16 +38,13 @@ const defaultProfileSettings: SaveSettingsDto = {
     language: 'ru',
   },
 };
-
 export function mergeBaseAndInputSettings(
   base: SaveSettingsDto,
   patch: Partial<SaveSettingsDto> | undefined,
 ): SaveSettingsDto {
   if (!patch) return base;
-
   const profile = { ...base.profile, ...patch.profile };
   const jobPreferences = { ...base.jobPreferences, ...patch.jobPreferences };
-
   return {
     profile: {
       ...profile,
@@ -77,11 +73,9 @@ export function mergeBaseAndInputSettings(
     },
   };
 }
-
 export function toFormDefaults(data: UserSettingsResponse | undefined): SaveSettingsDto {
   if (!data) {
     return structuredClone(defaultProfileSettings);
   }
-
   return mergeBaseAndInputSettings(defaultProfileSettings, data);
 }

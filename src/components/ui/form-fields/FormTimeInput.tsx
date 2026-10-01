@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { TimeField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormTimeInputProps extends BaseFieldProps {
   value: string;
   onChange: (value: string) => void;
@@ -9,7 +8,6 @@ export interface FormTimeInputProps extends BaseFieldProps {
   startTime?: string;
   endTime?: string;
 }
-
 export const FormTimeInput = forwardRef<HTMLInputElement, FormTimeInputProps>(
   (
     {
@@ -45,5 +43,4 @@ export const FormTimeInput = forwardRef<HTMLInputElement, FormTimeInputProps>(
     />
   ),
 );
-
 FormTimeInput.displayName = 'FormTimeInput';

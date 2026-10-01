@@ -1,3 +1,4 @@
+import { FormConstructorPage } from '@/features/constructor-form';
 export default function FormConstructor() {
-  return <div>Конструктор форм</div>;
+  return <FormConstructorPage />;
 }

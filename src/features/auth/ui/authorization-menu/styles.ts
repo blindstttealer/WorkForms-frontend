@@ -1,19 +1,16 @@
 import { styled } from 'styled-components';
 import { Button, Link } from '@admiral-ds/react-ui';
-
 export const StyledWrapper = styled.div`
   display: flex;
   gap: 10px;
   justify-content: space-between;
 `;
-
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 10px 24px;
 `;
-
 export const PageWrapper = styled.div`
   min-height: 100vh;
   display: flex;
@@ -63,7 +60,6 @@ export const PageWrapper = styled.div`
     z-index: 0;
   }
 `;
-
 export const FormCard = styled.div`
   background: linear-gradient(
     145deg,
@@ -109,14 +105,14 @@ export const FormCard = styled.div`
     border-radius: 20px;
   }
 `;
-
 export const FormHeader = styled.div`
   text-align: center;
   margin-bottom: 40px;
   position: relative;
 `;
-
-export const FormIcon = styled.div<{ icon?: string }>`
+export const FormIcon = styled.div<{
+  icon?: string;
+}>`
   width: 64px;
   height: 64px;
   margin: 0 auto 20px;
@@ -137,7 +133,6 @@ export const FormIcon = styled.div<{ icon?: string }>`
     filter: brightness(0) invert(1);
   }
 `;
-
 export const FormTitle = styled.h1`
   font-size: 32px;
   font-weight: 700;
@@ -155,7 +150,6 @@ export const FormTitle = styled.h1`
     font-size: 28px;
   }
 `;
-
 export const FormSubtitle = styled.p`
   font-size: 16px;
   color: ${({ theme }) => theme.color['Neutral/Neutral 50']};
@@ -163,7 +157,6 @@ export const FormSubtitle = styled.p`
   margin: 0;
   text-align: center;
 `;
-
 export const FieldRow = styled.div`
   margin-top: 20px;
   position: relative;
@@ -172,8 +165,9 @@ export const FieldRow = styled.div`
     margin-top: 0;
   }
 `;
-
-export const Actions = styled.div<{ isOneAction?: boolean }>`
+export const Actions = styled.div<{
+  isOneAction?: boolean;
+}>`
   display: flex;
   justify-content: ${({ isOneAction }) => (isOneAction ? 'center' : 'space-between')};
   align-items: center;
@@ -185,7 +179,6 @@ export const Actions = styled.div<{ isOneAction?: boolean }>`
     align-items: stretch;
   }
 `;
-
 export const AuthLinkWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -211,13 +204,11 @@ export const AuthLinkWrapper = styled.div`
     );
   }
 `;
-
 export const AuthText = styled.span`
   color: ${({ theme }) => theme.color['Neutral/Neutral 50']};
   font-size: 14px;
   margin-right: 8px;
 `;
-
 export const StyledLink = styled(Link)`
   font-size: 14px;
   font-weight: 600;
@@ -227,7 +218,6 @@ export const StyledLink = styled(Link)`
     transform: translateY(-1px);
   }
 `;
-
 export const SubmitButton = styled(Button)`
   min-width: 120px;
   height: 48px;
@@ -249,7 +239,6 @@ export const SubmitButton = styled(Button)`
     width: 100%;
   }
 `;
-
 export const GhostButton = styled(Button)`
   height: 48px;
   font-weight: 500;

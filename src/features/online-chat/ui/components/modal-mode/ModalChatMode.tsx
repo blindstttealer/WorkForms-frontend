@@ -1,14 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { ChatHeader, ModalCard, ModalOverlay } from './styles';
-
 import { Button } from '@admiral-ds/react-ui';
-
 interface ModalChatModeProps {
   onOpen: boolean;
   onCloseChat: () => void;
   setChatMode: () => void;
 }
-
 export const ModalChatMode = ({
   onCloseChat,
   onOpen,

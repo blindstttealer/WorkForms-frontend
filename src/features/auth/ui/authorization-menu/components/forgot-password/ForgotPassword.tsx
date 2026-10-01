@@ -4,11 +4,9 @@ import { Column } from '../../styles';
 import { StyledWrapper } from './styles';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { forgotPasswordSchema } from './validationSchema';
-
 type ForgotForm = {
   loginOrEmail: string;
 };
-
 export const ForgotVisible = ({
   setForgotVisible,
   forgotVisible,
@@ -17,7 +15,6 @@ export const ForgotVisible = ({
   forgotVisible: boolean;
 }) => {
   if (!forgotVisible) return null;
-
   const {
     register,
     handleSubmit,
@@ -29,11 +26,9 @@ export const ForgotVisible = ({
       loginOrEmail: '',
     },
   });
-
-  const handleForgot = async (values: ForgotForm) => {
-    console.log('handleForgot', values);
+  const handleForgot = async (_values: ForgotForm) => {
+    void _values;
   };
-
   return (
     <Modal onClose={() => setForgotVisible(false)} title="Восстановление пароля">
       <form onSubmit={handleSubmit(handleForgot)} noValidate>

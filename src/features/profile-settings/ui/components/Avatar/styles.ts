@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-
 export const AvatarWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -11,7 +10,6 @@ export const AvatarWrapper = styled.div`
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};
 `;
-
 export const AvatarImage = styled.img`
   border-radius: 50%;
   width: 88px;

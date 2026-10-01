@@ -2,28 +2,24 @@ class CacheService {
   private cacheMap: Map<
     string,
     {
-      data: any;
+      data: unknown;
       expiresAt: number;
     }
   > = new Map();
 
   constructor(private defaultMaxAge: number = 60000) {}
 
-  get(key: string): any | null {
+  get(key: string): unknown | null {
     const cachedItem = this.cacheMap.get(key);
-
     if (!cachedItem) return null;
-
-    // Проверяем срок годности
     if (Date.now() > cachedItem.expiresAt) {
       this.cacheMap.delete(key);
       return null;
     }
-
     return cachedItem.data;
   }
 
-  set(key: string, data: any, maxAge?: number): void {
+  set(key: string, data: unknown, maxAge?: number): void {
     const finalMaxAge = maxAge ?? this.defaultMaxAge;
     this.cacheMap.set(key, {
       data,

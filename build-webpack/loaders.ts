@@ -1,5 +1,4 @@
 import ReactRefreshTypeScript from 'react-refresh-typescript';
-
 export const getLoaders = (isProduction: boolean) => [
   {
     test: /\.tsx?$/,

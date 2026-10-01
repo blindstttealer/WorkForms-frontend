@@ -15,10 +15,8 @@ import type { ComponentType } from 'react';
 import { useFormContext } from 'react-hook-form';
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
 import type { AccountProps } from '../types';
-
 export const Account = ({ emailFromServer }: AccountProps) => {
   const { register } = useFormContext<SaveSettingsDto>();
-
   return (
     <SettingsBlock title="Настройки аккаунта" icon={SystemSettingsSolid}>
       <Content>
@@ -86,7 +84,6 @@ export const Account = ({ emailFromServer }: AccountProps) => {
     </SettingsBlock>
   );
 };
-
 const TitleRow = styled.div`
   display: flex;
   gap: 5px;
@@ -94,12 +91,13 @@ const TitleRow = styled.div`
   margin-left: -4px;
   align-items: center;
 `;
-
 type SectionProps = {
   title: string;
-  icon?: ComponentType<{ width?: number; height?: number }>;
+  icon?: ComponentType<{
+    width?: number;
+    height?: number;
+  }>;
 };
-
 const SectionTitle = ({ title, icon: Icon }: SectionProps) => {
   return (
     <TitleRow>
@@ -108,27 +106,22 @@ const SectionTitle = ({ title, icon: Icon }: SectionProps) => {
     </TitleRow>
   );
 };
-
 const SettingCard = styled(Card).attrs({
   hoverable: false,
 })`
   display: flex;
   flex-direction: column;
 `;
-
 const EmailInput = styled(InputField)`
   flex: 7;
 `;
-
 const UpdateButton = styled(Button)`
   flex: 1;
 `;
-
 const InputRow = styled.div`
   display: flex;
   gap: 10px;
 `;
-
 const ActionBlock = styled.div`
   display: flex;
   flex-direction: column;

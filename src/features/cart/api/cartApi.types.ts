@@ -8,7 +8,6 @@ export type CartProduct = {
   discountedTotal: number;
   thumbnail: string;
 };
-
 export type Cart = {
   id: number;
   products: CartProduct[];
@@ -18,7 +17,6 @@ export type Cart = {
   totalProducts: number;
   totalQuantity: number;
 };
-
 export type CartsResponse = {
   carts: Cart[];
   total: number;

@@ -8,10 +8,8 @@ import { CheckboxGroup } from './CheckboxGroup';
 import { CheckboxBlock } from './CheckboxBlock';
 import { Controller, useFormContext } from 'react-hook-form';
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
-
 export const WorkPreferences = () => {
   const { register, control } = useFormContext<SaveSettingsDto>();
-
   return (
     <SettingsBlock title="Предпочтения по работе" icon={CategoryColorSolid}>
       <Content>
@@ -89,7 +87,6 @@ export const WorkPreferences = () => {
     </SettingsBlock>
   );
 };
-
 const InputsBlockWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

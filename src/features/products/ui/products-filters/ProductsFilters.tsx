@@ -2,68 +2,52 @@ import React, { useState, useEffect } from 'react';
 import { Checkbox, Input, Slider, Collapse, Typography, Rate, Divider } from 'antd';
 import { StyledFilters } from './styles';
 import { Product } from '../../api/productsApi.types';
-
 const { Panel } = Collapse;
-const { Title, Text } = Typography;
-
+const { Text } = Typography;
 interface FilterProps {
   products: Product[];
   onFilterChange: (filteredProducts: Product[]) => void;
 }
-
 export const ProductFilters: React.FC<FilterProps> = ({ products, onFilterChange }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
   const [selectedRating, setSelectedRating] = useState<number>(0);
-
   useEffect(() => {
     applyFilters();
   }, [selectedCategories, selectedBrands, selectedTags, priceRange, selectedRating]);
-
   const applyFilters = () => {
     let filtered = [...products];
-
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((p) => p.category && selectedCategories.includes(p.category));
     }
-
     if (selectedBrands.length > 0) {
       filtered = filtered.filter((p) => p.brand && selectedBrands.includes(p.brand));
     }
-
     if (selectedTags.length > 0) {
       filtered = filtered.filter((p) => p.tags && p.tags.some((tag) => selectedTags.includes(tag)));
     }
-
     filtered = filtered.filter(
       (p) => p.price !== undefined && p.price >= priceRange[0] && p.price <= priceRange[1],
     );
-
     if (selectedRating > 0) {
       filtered = filtered.filter((p) => p.rating !== undefined && p.rating >= selectedRating);
     }
-
     onFilterChange(filtered);
   };
-
   const categories = Array.from(
     new Set(products.map((p) => p.category).filter((c): c is string => !!c)),
   );
-
   const brands = Array.from(new Set(products.map((p) => p.brand).filter((b): b is string => !!b)));
-
   const tags = Array.from(
     new Set(products.flatMap((p) => p.tags || []).filter((t): t is string => !!t)),
   );
-
   const handlePriceChange = (value: number | number[]) => {
     if (Array.isArray(value)) {
       setPriceRange([value[0], value[1]]);
     }
   };
-
   return (
     <StyledFilters>
       <Collapse ghost defaultActiveKey={['1']}>
@@ -117,7 +101,6 @@ export const ProductFilters: React.FC<FilterProps> = ({ products, onFilterChange
           </div>
         </Panel>
 
-        {/* Рейтинг */}
         <Panel header="Рейтинг" key="5">
           <Rate value={selectedRating} onChange={setSelectedRating} allowClear />
           {selectedRating > 0 && <Text style={{ marginLeft: 8 }}>{selectedRating}+ звезд</Text>}

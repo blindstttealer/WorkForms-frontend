@@ -2,10 +2,19 @@
   "forms": [
     {
       "id": "candidate-application",
-      "title": "Анкета кандидата на вакансию",
-      "description": "Заполните анкету для рассмотрения вашей кандидатуры на открытую позицию",
-      "createdAt": "2026-03-15T10:00:00.000Z",
-      "updatedAt": "2026-03-28T14:30:00.000Z",
+      "version": 1,
+      "metadata": {
+        "title": "Анкета кандидата на вакансию",
+        "description": "Заполните анкету для рассмотрения вашей кандидатуры на открытую позицию",
+        "createdAt": "2026-03-15T10:00:00.000Z",
+        "updatedAt": "2026-03-28T14:30:00.000Z"
+      },
+      "settings": {
+        "allowDraft": true,
+        "showProgressBar": true,
+        "showStepNumbers": true,
+        "submitButtonText": "Отправить"
+      },
       "steps": [
         {
           "id": "personal-info",
@@ -14,185 +23,174 @@
           "order": 1,
           "isSkippable": false,
           "allowBack": false,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "firstName",
-              "type": "text",
+              "name": "firstName",
               "label": "Имя",
               "placeholder": "Введите ваше имя",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
                 "minLength": 2,
                 "maxLength": 50,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Имя должно содержать от 2 до 50 символов"
+                "message": "Имя должно содержать от 2 до 50 символов"
               }
             },
             {
               "id": "lastName",
-              "type": "text",
+              "name": "lastName",
               "label": "Фамилия",
               "placeholder": "Введите вашу фамилию",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
                 "minLength": 2,
                 "maxLength": 50,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Фамилия должна содержать от 2 до 50 символов"
+                "message": "Фамилия должна содержать от 2 до 50 символов"
               }
             },
             {
               "id": "email",
-              "type": "email",
+              "name": "email",
               "label": "Электронная почта",
-              "placeholder": "example@mail.com",
               "description": "На этот адрес будут отправлены результаты рассмотрения",
-              "defaultValue": "",
+              "placeholder": "example@mail.com",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "email",
               "validation": {
-                "minLength": null,
                 "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите корректный email-адрес"
+                "message": "Введите корректный email-адрес"
               }
             },
             {
               "id": "phone",
-              "type": "tel",
+              "name": "phone",
               "label": "Телефон",
               "placeholder": "+7 (999) 123-45-67",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "tel",
               "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите корректный номер телефона"
+                "message": "Введите корректный номер телефона"
               }
             },
             {
               "id": "password",
-              "type": "password",
+              "name": "password",
               "label": "Пароль для личного кабинета",
-              "placeholder": "Минимум 8 символов",
               "description": "Пароль для доступа к порталу кандидата",
-              "defaultValue": "",
+              "placeholder": "Минимум 8 символов",
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "password",
               "validation": {
                 "minLength": 8,
                 "maxLength": 32,
-                "min": null,
-                "max": null,
                 "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
-                "errorMessage": "Пароль должен содержать заглавную и строчную буквы и цифру"
+                "message": "Пароль должен содержать заглавную и строчную буквы и цифру"
               }
             },
             {
               "id": "birthDate",
-              "type": "date",
+              "name": "birthDate",
               "label": "Дата рождения",
               "placeholder": "Выберите дату",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "date"
             },
             {
               "id": "gender",
-              "type": "radio",
+              "name": "gender",
               "label": "Пол",
-              "placeholder": "",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "radio",
               "options": [
-                { "label": "Мужской", "value": "male" },
-                { "label": "Женский", "value": "female" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+                {
+                  "id": "male",
+                  "label": "Мужской",
+                  "value": "male"
+                },
+                {
+                  "id": "female",
+                  "label": "Женский",
+                  "value": "female"
+                }
+              ]
             },
             {
               "id": "country",
-              "type": "select",
+              "name": "country",
               "label": "Страна",
               "placeholder": "Выберите страну",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "select",
               "options": [
-                { "label": "Россия", "value": "RU" },
-                { "label": "Беларусь", "value": "BY" },
-                { "label": "Казахстан", "value": "KZ" },
-                { "label": "Узбекистан", "value": "UZ" },
-                { "label": "Другое", "value": "OTHER" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите страну проживания"
-              }
+                {
+                  "id": "RU",
+                  "label": "Россия",
+                  "value": "RU"
+                },
+                {
+                  "id": "BY",
+                  "label": "Беларусь",
+                  "value": "BY"
+                },
+                {
+                  "id": "KZ",
+                  "label": "Казахстан",
+                  "value": "KZ"
+                },
+                {
+                  "id": "UZ",
+                  "label": "Узбекистан",
+                  "value": "UZ"
+                },
+                {
+                  "id": "OTHER",
+                  "label": "Другое",
+                  "value": "OTHER"
+                }
+              ]
             },
             {
               "id": "city",
-              "type": "text",
+              "name": "city",
               "label": "Город",
               "placeholder": "Введите город проживания",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
-                "minLength": null,
-                "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
+                "maxLength": 100
               }
             }
           ]
@@ -204,177 +202,213 @@
           "order": 2,
           "isSkippable": false,
           "allowBack": true,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "position",
-              "type": "text",
+              "name": "position",
               "label": "Желаемая должность",
               "placeholder": "Например: Frontend-разработчик",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "text",
               "validation": {
                 "minLength": 2,
                 "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите желаемую должность"
+                "message": "Укажите желаемую должность"
               }
             },
             {
               "id": "experienceYears",
-              "type": "number",
+              "name": "experienceYears",
               "label": "Опыт работы (лет)",
               "placeholder": "0",
-              "description": "",
-              "defaultValue": 0,
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "number",
+              "defaultValue": 0,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 0,
                 "max": 50,
-                "pattern": null,
-                "errorMessage": "Укажите корректное количество лет"
+                "message": "Укажите корректное количество лет"
               }
             },
             {
               "id": "salaryExpectation",
-              "type": "number",
+              "name": "salaryExpectation",
               "label": "Ожидаемая зарплата (₽)",
-              "placeholder": "100000",
               "description": "Укажите сумму до вычета налогов",
-              "defaultValue": null,
+              "placeholder": "100000",
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "number",
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 0,
-                "max": 10000000,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 10000000
               }
             },
             {
               "id": "skills",
-              "type": "checkbox",
+              "name": "skills",
               "label": "Ключевые навыки",
-              "placeholder": "",
               "description": "Выберите технологии, которыми владеете",
-              "defaultValue": [],
               "required": true,
-              "width": 100,
+              "ui": {
+                "span": 12
+              },
+              "type": "checkbox",
+              "defaultValue": [],
               "options": [
-                { "label": "JavaScript", "value": "javascript" },
-                { "label": "TypeScript", "value": "typescript" },
-                { "label": "React", "value": "react" },
-                { "label": "Vue.js", "value": "vue" },
-                { "label": "Node.js", "value": "nodejs" },
-                { "label": "Python", "value": "python" },
-                { "label": "Java", "value": "java" },
-                { "label": "SQL", "value": "sql" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите хотя бы один навык"
-              }
+                {
+                  "id": "javascript",
+                  "label": "JavaScript",
+                  "value": "javascript"
+                },
+                {
+                  "id": "typescript",
+                  "label": "TypeScript",
+                  "value": "typescript"
+                },
+                {
+                  "id": "react",
+                  "label": "React",
+                  "value": "react"
+                },
+                {
+                  "id": "vue",
+                  "label": "Vue.js",
+                  "value": "vue"
+                },
+                {
+                  "id": "nodejs",
+                  "label": "Node.js",
+                  "value": "nodejs"
+                },
+                {
+                  "id": "python",
+                  "label": "Python",
+                  "value": "python"
+                },
+                {
+                  "id": "java",
+                  "label": "Java",
+                  "value": "java"
+                },
+                {
+                  "id": "sql",
+                  "label": "SQL",
+                  "value": "sql"
+                }
+              ]
             },
             {
               "id": "englishLevel",
-              "type": "select",
+              "name": "englishLevel",
               "label": "Уровень английского",
               "placeholder": "Выберите уровень",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "select",
               "options": [
-                { "label": "A1 — Начальный", "value": "A1" },
-                { "label": "A2 — Элементарный", "value": "A2" },
-                { "label": "B1 — Средний", "value": "B1" },
-                { "label": "B2 — Выше среднего", "value": "B2" },
-                { "label": "C1 — Продвинутый", "value": "C1" },
-                { "label": "C2 — Владение в совершенстве", "value": "C2" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+                {
+                  "id": "A1",
+                  "label": "A1 — Начальный",
+                  "value": "A1"
+                },
+                {
+                  "id": "A2",
+                  "label": "A2 — Элементарный",
+                  "value": "A2"
+                },
+                {
+                  "id": "B1",
+                  "label": "B1 — Средний",
+                  "value": "B1"
+                },
+                {
+                  "id": "B2",
+                  "label": "B2 — Выше среднего",
+                  "value": "B2"
+                },
+                {
+                  "id": "C1",
+                  "label": "C1 — Продвинутый",
+                  "value": "C1"
+                },
+                {
+                  "id": "C2",
+                  "label": "C2 — Владение в совершенстве",
+                  "value": "C2"
+                }
+              ]
             },
             {
               "id": "workFormat",
-              "type": "radio",
+              "name": "workFormat",
               "label": "Формат работы",
-              "placeholder": "",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "radio",
               "options": [
-                { "label": "Офис", "value": "office" },
-                { "label": "Удалённо", "value": "remote" },
-                { "label": "Гибрид", "value": "hybrid" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите предпочтительный формат работы"
-              }
+                {
+                  "id": "office",
+                  "label": "Офис",
+                  "value": "office"
+                },
+                {
+                  "id": "remote",
+                  "label": "Удалённо",
+                  "value": "remote"
+                },
+                {
+                  "id": "hybrid",
+                  "label": "Гибрид",
+                  "value": "hybrid"
+                }
+              ]
             },
             {
               "id": "linkedinUrl",
-              "type": "url",
+              "name": "linkedinUrl",
               "label": "Профиль LinkedIn",
               "placeholder": "https://linkedin.com/in/your-profile",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "url",
               "validation": {
-                "minLength": null,
                 "maxLength": 200,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите корректный URL"
+                "message": "Введите корректный URL"
               }
             },
             {
               "id": "aboutExperience",
-              "type": "textarea",
+              "name": "aboutExperience",
               "label": "Расскажите о вашем опыте",
               "placeholder": "Опишите ваш профессиональный опыт, достижения и проекты...",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
                 "minLength": 20,
                 "maxLength": 2000,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Описание должно содержать от 20 до 2000 символов"
+                "message": "Описание должно содержать от 20 до 2000 символов"
               }
             }
           ]
@@ -386,176 +420,164 @@
           "order": 3,
           "isSkippable": true,
           "allowBack": true,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "resume",
-              "type": "file",
+              "name": "resume",
               "label": "Резюме",
-              "placeholder": "",
               "description": "Загрузите файл в формате PDF или DOCX",
-              "defaultValue": null,
               "required": true,
-              "width": 100,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Загрузите резюме"
-              }
+              "ui": {
+                "span": 12
+              },
+              "type": "file"
             },
             {
               "id": "startDate",
-              "type": "date",
+              "name": "startDate",
               "label": "Дата готовности к выходу",
               "placeholder": "Выберите дату",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "date"
             },
             {
               "id": "readyForRelocation",
-              "type": "switch",
+              "name": "readyForRelocation",
               "label": "Готовность к переезду",
-              "placeholder": "",
-              "description": "",
-              "defaultValue": false,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "switch",
+              "defaultValue": false
             },
             {
               "id": "noticePeriod",
-              "type": "slider",
+              "name": "noticePeriod",
               "label": "Срок уведомления (недели)",
-              "placeholder": "",
               "description": "За сколько недель вы можете уволиться с текущего места работы",
-              "defaultValue": 2,
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "slider",
+              "defaultValue": 2,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 0,
-                "max": 12,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 12
               }
             },
             {
               "id": "referralSource",
-              "type": "select",
+              "name": "referralSource",
               "label": "Откуда узнали о вакансии",
               "placeholder": "Выберите источник",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "select",
               "options": [
-                { "label": "HeadHunter", "value": "hh" },
-                { "label": "LinkedIn", "value": "linkedin" },
-                { "label": "Рекомендация знакомых", "value": "referral" },
-                { "label": "Telegram-каналы", "value": "telegram" },
-                { "label": "Сайт компании", "value": "website" },
-                { "label": "Другое", "value": "other" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+                {
+                  "id": "hh",
+                  "label": "HeadHunter",
+                  "value": "hh"
+                },
+                {
+                  "id": "linkedin",
+                  "label": "LinkedIn",
+                  "value": "linkedin"
+                },
+                {
+                  "id": "referral",
+                  "label": "Рекомендация знакомых",
+                  "value": "referral"
+                },
+                {
+                  "id": "telegram",
+                  "label": "Telegram-каналы",
+                  "value": "telegram"
+                },
+                {
+                  "id": "website",
+                  "label": "Сайт компании",
+                  "value": "website"
+                },
+                {
+                  "id": "other",
+                  "label": "Другое",
+                  "value": "other"
+                }
+              ]
             },
             {
               "id": "portfolioUrl",
-              "type": "url",
+              "name": "portfolioUrl",
               "label": "Ссылка на портфолио",
               "placeholder": "https://your-portfolio.com",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "url",
               "validation": {
-                "minLength": null,
                 "maxLength": 200,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите корректный URL"
+                "message": "Введите корректный URL"
               }
             },
             {
               "id": "additionalNotes",
-              "type": "textarea",
+              "name": "additionalNotes",
               "label": "Дополнительные комментарии",
               "placeholder": "Укажите любую информацию, которую считаете важной...",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
-                "minLength": null,
-                "maxLength": 1000,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
+                "maxLength": 1000
               }
             },
             {
               "id": "agreeToTerms",
-              "type": "switch",
+              "name": "agreeToTerms",
               "label": "Согласие на обработку персональных данных",
-              "placeholder": "",
               "description": "Я даю согласие на обработку моих персональных данных в соответствии с политикой конфиденциальности",
-              "defaultValue": false,
               "required": true,
-              "width": 100,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Необходимо дать согласие на обработку персональных данных"
-              }
+              "ui": {
+                "span": 12
+              },
+              "type": "switch",
+              "defaultValue": false
             }
           ]
         }
-      ]
+      ],
+      "crossFieldRules": []
     },
     {
       "id": "interview-feedback",
-      "title": "Отчёт о собеседовании",
-      "description": "Заполните форму обратной связи после проведённого собеседования",
-      "createdAt": "2026-03-20T09:00:00.000Z",
-      "updatedAt": "2026-03-27T16:45:00.000Z",
+      "version": 1,
+      "metadata": {
+        "title": "Отчёт о собеседовании",
+        "description": "Заполните форму обратной связи после проведённого собеседования",
+        "createdAt": "2026-03-20T09:00:00.000Z",
+        "updatedAt": "2026-03-27T16:45:00.000Z"
+      },
+      "settings": {
+        "allowDraft": true,
+        "showProgressBar": true,
+        "showStepNumbers": true,
+        "submitButtonText": "Отправить"
+      },
       "steps": [
         {
           "id": "interview-info",
@@ -564,147 +586,134 @@
           "order": 1,
           "isSkippable": false,
           "allowBack": false,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "candidateName",
-              "type": "text",
+              "name": "candidateName",
               "label": "ФИО кандидата",
               "placeholder": "Иванов Иван Иванович",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
                 "minLength": 2,
                 "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите ФИО кандидата"
+                "message": "Укажите ФИО кандидата"
               }
             },
             {
               "id": "interviewerName",
-              "type": "text",
+              "name": "interviewerName",
               "label": "ФИО интервьюера",
               "placeholder": "Петров Пётр Петрович",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
                 "minLength": 2,
                 "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите ФИО интервьюера"
+                "message": "Укажите ФИО интервьюера"
               }
             },
             {
               "id": "interviewerEmail",
-              "type": "email",
+              "name": "interviewerEmail",
               "label": "Email интервьюера",
               "placeholder": "interviewer@company.com",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "email",
               "validation": {
-                "minLength": null,
                 "maxLength": 100,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите корректный email"
+                "message": "Введите корректный email"
               }
             },
             {
               "id": "interviewDate",
-              "type": "date",
+              "name": "interviewDate",
               "label": "Дата собеседования",
               "placeholder": "Выберите дату",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите дату собеседования"
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "date"
             },
             {
               "id": "interviewTime",
-              "type": "time",
+              "name": "interviewTime",
               "label": "Время начала",
               "placeholder": "Выберите время",
-              "description": "",
-              "defaultValue": null,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "time"
             },
             {
               "id": "interviewType",
-              "type": "select",
+              "name": "interviewType",
               "label": "Тип собеседования",
               "placeholder": "Выберите тип",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "select",
               "options": [
-                { "label": "Техническое", "value": "technical" },
-                { "label": "HR-интервью", "value": "hr" },
-                { "label": "Финальное", "value": "final" },
-                { "label": "Пробный день", "value": "trial" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите тип собеседования"
-              }
+                {
+                  "id": "technical",
+                  "label": "Техническое",
+                  "value": "technical"
+                },
+                {
+                  "id": "hr",
+                  "label": "HR-интервью",
+                  "value": "hr"
+                },
+                {
+                  "id": "final",
+                  "label": "Финальное",
+                  "value": "final"
+                },
+                {
+                  "id": "trial",
+                  "label": "Пробный день",
+                  "value": "trial"
+                }
+              ]
             },
             {
               "id": "interviewFormat",
-              "type": "radio",
+              "name": "interviewFormat",
               "label": "Формат проведения",
-              "placeholder": "",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "radio",
               "options": [
-                { "label": "Онлайн", "value": "online" },
-                { "label": "Офлайн", "value": "offline" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите формат собеседования"
-              }
+                {
+                  "id": "online",
+                  "label": "Онлайн",
+                  "value": "online"
+                },
+                {
+                  "id": "offline",
+                  "label": "Офлайн",
+                  "value": "offline"
+                }
+              ]
             }
           ]
         },
@@ -715,237 +724,234 @@
           "order": 2,
           "isSkippable": false,
           "allowBack": true,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "technicalScore",
-              "type": "slider",
+              "name": "technicalScore",
               "label": "Технический уровень",
-              "placeholder": "",
               "description": "Оцените от 1 до 10",
-              "defaultValue": 5,
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "slider",
+              "defaultValue": 5,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 1,
-                "max": 10,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 10
               }
             },
             {
               "id": "communicationScore",
-              "type": "slider",
+              "name": "communicationScore",
               "label": "Коммуникация",
-              "placeholder": "",
               "description": "Оцените от 1 до 10",
-              "defaultValue": 5,
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "slider",
+              "defaultValue": 5,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 1,
-                "max": 10,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 10
               }
             },
             {
               "id": "teamFitScore",
-              "type": "slider",
+              "name": "teamFitScore",
               "label": "Совместимость с командой",
-              "placeholder": "",
               "description": "Оцените от 1 до 10",
-              "defaultValue": 5,
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "slider",
+              "defaultValue": 5,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 1,
-                "max": 10,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 10
               }
             },
             {
               "id": "overallScore",
-              "type": "slider",
+              "name": "overallScore",
               "label": "Общая оценка",
-              "placeholder": "",
               "description": "Оцените от 1 до 10",
-              "defaultValue": 5,
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "slider",
+              "defaultValue": 5,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 1,
-                "max": 10,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 10
               }
             },
             {
               "id": "strengths",
-              "type": "textarea",
+              "name": "strengths",
               "label": "Сильные стороны",
               "placeholder": "Опишите сильные стороны кандидата...",
-              "description": "",
-              "defaultValue": "",
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
                 "minLength": 10,
                 "maxLength": 1000,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Опишите сильные стороны (от 10 символов)"
+                "message": "Опишите сильные стороны (от 10 символов)"
               }
             },
             {
               "id": "weaknesses",
-              "type": "textarea",
+              "name": "weaknesses",
               "label": "Зоны роста",
               "placeholder": "Опишите зоны роста кандидата...",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
-                "minLength": null,
-                "maxLength": 1000,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
+                "maxLength": 1000
               }
             },
             {
               "id": "evaluatedSkills",
-              "type": "checkbox",
+              "name": "evaluatedSkills",
               "label": "Проверенные компетенции",
-              "placeholder": "",
               "description": "Отметьте области, которые были оценены на собеседовании",
-              "defaultValue": [],
               "required": false,
-              "width": 100,
+              "ui": {
+                "span": 12
+              },
+              "type": "checkbox",
+              "defaultValue": [],
               "options": [
-                { "label": "Алгоритмы и структуры данных", "value": "algorithms" },
-                { "label": "Системный дизайн / Архитектура", "value": "system_design" },
-                { "label": "Работа с API", "value": "api" },
-                { "label": "Базы данных", "value": "databases" },
-                { "label": "Тестирование", "value": "testing" },
-                { "label": "Коммуникация и soft skills", "value": "soft_skills" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+                {
+                  "id": "algorithms",
+                  "label": "Алгоритмы и структуры данных",
+                  "value": "algorithms"
+                },
+                {
+                  "id": "system_design",
+                  "label": "Системный дизайн / Архитектура",
+                  "value": "system_design"
+                },
+                {
+                  "id": "api",
+                  "label": "Работа с API",
+                  "value": "api"
+                },
+                {
+                  "id": "databases",
+                  "label": "Базы данных",
+                  "value": "databases"
+                },
+                {
+                  "id": "testing",
+                  "label": "Тестирование",
+                  "value": "testing"
+                },
+                {
+                  "id": "soft_skills",
+                  "label": "Коммуникация и soft skills",
+                  "value": "soft_skills"
+                }
+              ]
             },
             {
               "id": "recommendation",
-              "type": "radio",
+              "name": "recommendation",
               "label": "Рекомендация",
-              "placeholder": "",
-              "description": "",
-              "defaultValue": null,
               "required": true,
-              "width": 100,
+              "ui": {
+                "span": 12
+              },
+              "type": "radio",
               "options": [
-                { "label": "Нанять", "value": "hire" },
-                { "label": "Повторное собеседование", "value": "re_interview" },
-                { "label": "Отказ", "value": "reject" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите вашу рекомендацию"
-              }
+                {
+                  "id": "hire",
+                  "label": "Нанять",
+                  "value": "hire"
+                },
+                {
+                  "id": "re_interview",
+                  "label": "Повторное собеседование",
+                  "value": "re_interview"
+                },
+                {
+                  "id": "reject",
+                  "label": "Отказ",
+                  "value": "reject"
+                }
+              ]
             },
             {
               "id": "sendNotification",
-              "type": "switch",
+              "name": "sendNotification",
               "label": "Отправить уведомление кандидату",
-              "placeholder": "",
               "description": "Уведомить кандидата о результатах по email",
-              "defaultValue": true,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "switch",
+              "defaultValue": true
             },
             {
               "id": "urgentHire",
-              "type": "switch",
+              "name": "urgentHire",
               "label": "Срочный найм",
-              "placeholder": "",
               "description": "Отметьте, если кандидат нужен срочно",
-              "defaultValue": false,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "switch",
+              "defaultValue": false
             },
             {
               "id": "comments",
-              "type": "textarea",
+              "name": "comments",
               "label": "Дополнительные комментарии",
               "placeholder": "Любые дополнительные замечания...",
-              "description": "",
-              "defaultValue": "",
               "required": false,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
-                "minLength": null,
-                "maxLength": 2000,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
+                "maxLength": 2000
               }
             }
           ]
         }
-      ]
+      ],
+      "crossFieldRules": []
     },
     {
       "id": "field-types-qa",
-      "title": "QA — все типы полей и валидация",
-      "description": "Служебная форма для проверки рендеринга и правил валидации каждого type из схемы конструктора.",
-      "createdAt": "2026-03-30T10:00:00.000Z",
-      "updatedAt": "2026-03-30T10:00:00.000Z",
+      "version": 1,
+      "metadata": {
+        "title": "QA — все типы полей и валидация",
+        "description": "Служебная форма для проверки рендеринга и правил валидации каждого type из схемы конструктора.",
+        "createdAt": "2026-03-30T10:00:00.000Z",
+        "updatedAt": "2026-03-30T10:00:00.000Z"
+      },
+      "settings": {
+        "allowDraft": true,
+        "showProgressBar": true,
+        "showStepNumbers": true,
+        "submitButtonText": "Отправить"
+      },
       "steps": [
         {
           "id": "qa-step-text-and-numbers",
@@ -954,138 +960,128 @@
           "order": 1,
           "isSkippable": false,
           "allowBack": false,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "qaText",
-              "type": "text",
+              "name": "qaText",
               "label": "Текст (min/max длина)",
-              "placeholder": "От 3 до 30 символов",
               "description": "Проверка minLength и maxLength.",
-              "defaultValue": "",
+              "placeholder": "От 3 до 30 символов",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "text",
               "validation": {
                 "minLength": 3,
                 "maxLength": 30,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите от 3 до 30 символов"
+                "message": "Введите от 3 до 30 символов"
               }
             },
             {
               "id": "qaNumber",
-              "type": "number",
+              "name": "qaNumber",
               "label": "Число (min/max значения)",
-              "placeholder": "10–9999",
               "description": "Проверка min/max для числа (если поддерживается на фронте).",
-              "defaultValue": null,
+              "placeholder": "10–9999",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "number",
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 10,
                 "max": 9999,
-                "pattern": null,
-                "errorMessage": "Число должно быть от 10 до 9999"
+                "message": "Число должно быть от 10 до 9999"
               }
             },
             {
               "id": "qaEmail",
-              "type": "email",
+              "name": "qaEmail",
               "label": "Email",
-              "placeholder": "you@example.com",
               "description": "Обязательное поле + встроенная проверка формата email.",
-              "defaultValue": "",
+              "placeholder": "you@example.com",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "email",
               "validation": {
-                "minLength": null,
                 "maxLength": 80,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите корректный email"
+                "message": "Укажите корректный email"
               }
             },
             {
               "id": "qaPassword",
-              "type": "password",
+              "name": "qaPassword",
               "label": "Пароль (pattern + длина)",
-              "placeholder": "Строчная, заглавная, цифра",
               "description": "Regex: минимум одна строчная, одна заглавная, одна цифра; длина 8–24.",
-              "defaultValue": "",
+              "placeholder": "Строчная, заглавная, цифра",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "password",
               "validation": {
                 "minLength": 8,
                 "maxLength": 24,
-                "min": null,
-                "max": null,
                 "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
-                "errorMessage": "Пароль: 8–24 символа, латиница, минимум одна строчная, заглавная и цифра"
+                "message": "Пароль: 8–24 символа, латиница, минимум одна строчная, заглавная и цифра"
               }
             },
             {
               "id": "qaTel",
-              "type": "tel",
+              "name": "qaTel",
               "label": "Телефон",
-              "placeholder": "+7 900 000-00-00",
               "description": "Обязательное поле; при необходимости добавьте свою маску на фронте.",
-              "defaultValue": "",
+              "placeholder": "+7 900 000-00-00",
               "required": true,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "tel",
               "validation": {
                 "minLength": 10,
                 "maxLength": 20,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Введите номер телефона (10–20 символов)"
+                "message": "Введите номер телефона (10–20 символов)"
               }
             },
             {
               "id": "qaUrl",
-              "type": "url",
+              "name": "qaUrl",
               "label": "URL (https)",
-              "placeholder": "https://example.com/path",
               "description": "Проверка new URL() + maxLength.",
-              "defaultValue": "",
+              "placeholder": "https://example.com/path",
               "required": false,
-              "width": 50,
-              "options": [],
+              "ui": {
+                "span": 6
+              },
+              "type": "url",
               "validation": {
-                "minLength": null,
                 "maxLength": 200,
-                "min": null,
-                "max": null,
                 "pattern": "^https://.+",
-                "errorMessage": "Укажите URL, начинающийся с https://"
+                "message": "Укажите URL, начинающийся с https://"
               }
             },
             {
               "id": "qaTextarea",
-              "type": "textarea",
+              "name": "qaTextarea",
               "label": "Многострочный текст",
-              "placeholder": "Минимум 15 символов, максимум 500",
               "description": "textarea + minLength/maxLength.",
-              "defaultValue": "",
+              "placeholder": "Минимум 15 символов, максимум 500",
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "textarea",
               "validation": {
                 "minLength": 15,
                 "maxLength": 500,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "От 15 до 500 символов"
+                "message": "От 15 до 500 символов"
               }
             }
           ]
@@ -1097,193 +1093,176 @@
           "order": 2,
           "isSkippable": false,
           "allowBack": true,
+          "layout": {
+            "columns": 12,
+            "gap": 16
+          },
           "fields": [
             {
               "id": "qaSelect",
-              "type": "select",
+              "name": "qaSelect",
               "label": "Выпадающий список",
-              "placeholder": "Выберите вариант",
               "description": "select + options + required.",
-              "defaultValue": null,
+              "placeholder": "Выберите вариант",
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "select",
               "options": [
-                { "label": "Вариант A", "value": "a" },
-                { "label": "Вариант B", "value": "b" },
-                { "label": "Вариант C", "value": "c" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите значение из списка"
-              }
+                {
+                  "id": "a",
+                  "label": "Вариант A",
+                  "value": "a"
+                },
+                {
+                  "id": "b",
+                  "label": "Вариант B",
+                  "value": "b"
+                },
+                {
+                  "id": "c",
+                  "label": "Вариант C",
+                  "value": "c"
+                }
+              ]
             },
             {
               "id": "qaRadio",
-              "type": "radio",
+              "name": "qaRadio",
               "label": "Радио-группа",
-              "placeholder": "",
               "description": "radio + options + required.",
-              "defaultValue": null,
               "required": true,
-              "width": 50,
+              "ui": {
+                "span": 6
+              },
+              "type": "radio",
               "options": [
-                { "label": "Да", "value": "yes" },
-                { "label": "Нет", "value": "no" },
-                { "label": "Не знаю", "value": "unknown" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Выберите один из вариантов"
-              }
+                {
+                  "id": "yes",
+                  "label": "Да",
+                  "value": "yes"
+                },
+                {
+                  "id": "no",
+                  "label": "Нет",
+                  "value": "no"
+                },
+                {
+                  "id": "unknown",
+                  "label": "Не знаю",
+                  "value": "unknown"
+                }
+              ]
             },
             {
               "id": "qaCheckbox",
-              "type": "checkbox",
+              "name": "qaCheckbox",
               "label": "Чекбоксы (несколько)",
-              "placeholder": "",
               "description": "Выберите минимум один пункт.",
-              "defaultValue": [],
               "required": true,
-              "width": 100,
+              "ui": {
+                "span": 12
+              },
+              "type": "checkbox",
+              "defaultValue": [],
               "options": [
-                { "label": "Пункт 1", "value": "p1" },
-                { "label": "Пункт 2", "value": "p2" },
-                { "label": "Пункт 3", "value": "p3" }
-              ],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Отметьте хотя бы один пункт"
-              }
+                {
+                  "id": "p1",
+                  "label": "Пункт 1",
+                  "value": "p1"
+                },
+                {
+                  "id": "p2",
+                  "label": "Пункт 2",
+                  "value": "p2"
+                },
+                {
+                  "id": "p3",
+                  "label": "Пункт 3",
+                  "value": "p3"
+                }
+              ]
             },
             {
               "id": "qaDate",
-              "type": "date",
+              "name": "qaDate",
               "label": "Дата",
-              "placeholder": "Выберите дату",
               "description": "Обязательная дата.",
-              "defaultValue": null,
+              "placeholder": "Выберите дату",
               "required": true,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Укажите дату"
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "date"
             },
             {
               "id": "qaTime",
-              "type": "time",
+              "name": "qaTime",
               "label": "Время",
-              "placeholder": "Выберите время",
               "description": "Необязательное время.",
-              "defaultValue": null,
+              "placeholder": "Выберите время",
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "time"
             },
             {
               "id": "qaFile",
-              "type": "file",
+              "name": "qaFile",
               "label": "Файл (обязательный)",
-              "placeholder": "",
               "description": "Загрузите любой файл для проверки file + required.",
-              "defaultValue": null,
               "required": true,
-              "width": 100,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Прикрепите файл"
-              }
+              "ui": {
+                "span": 12
+              },
+              "type": "file"
             },
             {
               "id": "qaSwitchOptional",
-              "type": "switch",
+              "name": "qaSwitchOptional",
               "label": "Переключатель (необязательный)",
-              "placeholder": "",
               "description": "Можно оставить выключенным.",
-              "defaultValue": false,
               "required": false,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": ""
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "switch",
+              "defaultValue": false
             },
             {
               "id": "qaSwitchTerms",
-              "type": "switch",
+              "name": "qaSwitchTerms",
               "label": "Согласие (обязательное)",
-              "placeholder": "",
               "description": "Должно быть включено для отправки шага.",
-              "defaultValue": false,
               "required": true,
-              "width": 50,
-              "options": [],
-              "validation": {
-                "minLength": null,
-                "maxLength": null,
-                "min": null,
-                "max": null,
-                "pattern": null,
-                "errorMessage": "Включите переключатель согласия"
-              }
+              "ui": {
+                "span": 6
+              },
+              "type": "switch",
+              "defaultValue": false
             },
             {
               "id": "qaSlider",
-              "type": "slider",
+              "name": "qaSlider",
               "label": "Слайдер (1–100)",
-              "placeholder": "",
               "description": "Проверка min/max на слайдере (если реализовано в форме).",
-              "defaultValue": 50,
               "required": true,
-              "width": 100,
-              "options": [],
+              "ui": {
+                "span": 12
+              },
+              "type": "slider",
+              "defaultValue": 50,
               "validation": {
-                "minLength": null,
-                "maxLength": null,
                 "min": 1,
-                "max": 100,
-                "pattern": null,
-                "errorMessage": ""
+                "max": 100
               }
             }
           ]
         }
-      ]
+      ],
+      "crossFieldRules": []
     }
   ]
 }

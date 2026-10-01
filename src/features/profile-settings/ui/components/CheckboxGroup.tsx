@@ -4,23 +4,19 @@ import { Controller, useFormContext, type FieldPath } from 'react-hook-form';
 import type { SaveSettingsDto } from '@/api/generated/model/saveSettingsDto';
 import { LegendText } from '../styles';
 import type { CheckboxOptionItem } from '../types';
-
 type Props = {
   title: string;
   name: FieldPath<SaveSettingsDto>;
   data: CheckboxOptionItem[];
 };
-
 export const CheckboxGroup = ({ title, name, data }: Props) => {
   const { control } = useFormContext<SaveSettingsDto>();
-
   return (
     <Controller
       name={name}
       control={control}
       render={({ field }) => {
         const selected = (field.value as string[] | undefined) ?? [];
-
         const toggle = (id: string) => {
           const set = new Set(selected);
           if (set.has(id)) {
@@ -30,7 +26,6 @@ export const CheckboxGroup = ({ title, name, data }: Props) => {
           }
           field.onChange([...set]);
         };
-
         return (
           <FieldSet flexDirection="column">
             <LegendText>{title}</LegendText>
@@ -51,14 +46,12 @@ export const CheckboxGroup = ({ title, name, data }: Props) => {
     />
   );
 };
-
 const CheckboxGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   width: 100%;
 `;
-
 const StyledCheckboxField = styled(CheckboxField)`
   align-items: center;
   border: 1px solid ${({ theme }) => theme.color['Neutral/Neutral 20']};

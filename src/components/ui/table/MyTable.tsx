@@ -1,7 +1,6 @@
 import React from 'react';
 import { Table, Empty, Button, ConfigProvider } from 'antd';
 import type { TableProps, ColumnsType } from 'antd/es/table';
-
 interface ReusableTableProps<T> extends Omit<TableProps<T>, 'title'> {
   columns: ColumnsType<T>;
   data: T[];
@@ -10,8 +9,11 @@ interface ReusableTableProps<T> extends Omit<TableProps<T>, 'title'> {
   onToggleData?: () => void;
   emptyDescription?: React.ReactNode;
 }
-
-export function AntdTableComponent<T extends { key?: React.Key }>({
+export function AntdTableComponent<
+  T extends {
+    key?: React.Key;
+  },
+>({
   columns,
   data,
   title,
@@ -23,15 +25,12 @@ export function AntdTableComponent<T extends { key?: React.Key }>({
   const dataWithKeys = React.useMemo(() => {
     return data.map((item, index) => (item.key ? item : { ...item, key: index }));
   }, [data]);
-
-  const renderEmpty = (componentName?: string) => <Empty description={emptyDescription} />;
-
+  const renderEmpty = () => <Empty description={emptyDescription} />;
   const toggleButton = onToggleData ? (
     <Button type="primary" onClick={onToggleData} style={{ marginBottom: 12 }}>
       {toggleButtonLabel}
     </Button>
   ) : null;
-
   return (
     <ConfigProvider renderEmpty={renderEmpty}>
       {title && <h3>{title}</h3>}

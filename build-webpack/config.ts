@@ -4,11 +4,9 @@ import { getPlugins } from './plugins';
 import { getOptimization } from './optimization';
 import { getDevServer } from './dev-server';
 import type { WebpackOptions } from './options';
-
 export const createConfig = (options: WebpackOptions) => {
   const paths = getPaths(options);
   const isProduction = options.mode === 'production';
-
   return {
     mode: options.mode,
     entry: paths.entry,
@@ -30,7 +28,6 @@ export const createConfig = (options: WebpackOptions) => {
     plugins: getPlugins(options, paths, isProduction),
     devServer: !isProduction ? getDevServer(options) : undefined,
     optimization: isProduction ? getOptimization() : undefined,
-    // devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
     devtool: 'source-map',
   };
 };

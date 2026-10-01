@@ -3,7 +3,6 @@ export type ProductDimensions = {
   height: number;
   depth: number;
 };
-
 export type ProductReview = {
   rating: number;
   comment: string;
@@ -11,14 +10,12 @@ export type ProductReview = {
   reviewerName: string;
   reviewerEmail: string;
 };
-
 export type ProductMeta = {
   createdAt: string;
   updatedAt: string;
   barcode: string;
   qrCode: string;
 };
-
 export type Product = {
   id: number;
   title: string;
@@ -43,18 +40,15 @@ export type Product = {
   thumbnail: string;
   images: string[];
 };
-
 export type DeletedProduct = Product & {
   isDeleted: boolean;
   deletedOn: string;
 };
-
 export type ProductCategories = {
   slug: string;
   name: string;
   url: string;
 };
-
 export type ProductCategory =
   | 'beauty'
   | 'fragrances'
@@ -80,9 +74,7 @@ export type ProductCategory =
   | 'womens-jewellery'
   | 'womens-shoes'
   | 'womens-watches';
-
 export type CategoryList = ProductCategory[];
-
 export type ProductResponse = {
   products: Product[];
   total: number;

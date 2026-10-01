@@ -1,8 +1,7 @@
-import React, { FC, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Avatar, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-
 const UserName = styled.span`
   margin-left: 8px;
   cursor: pointer;
@@ -12,7 +11,6 @@ interface UserAvatarProps {
   name?: string;
   email?: string;
 }
-
 export const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
   ({ email = '', name = '' }, ref) => (
     <div>

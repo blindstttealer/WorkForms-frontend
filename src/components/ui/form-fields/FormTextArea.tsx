@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { TextField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormTextAreaProps extends BaseFieldProps {
   value: string;
   onChange: (value: string) => void;
@@ -9,7 +8,6 @@ export interface FormTextAreaProps extends BaseFieldProps {
   maxLength?: number;
   rows?: number;
 }
-
 export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
   (
     {
@@ -43,5 +41,4 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
     />
   ),
 );
-
 FormTextArea.displayName = 'FormTextArea';

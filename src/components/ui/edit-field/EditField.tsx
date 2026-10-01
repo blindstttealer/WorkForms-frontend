@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { CheckOutlined, EditOutlined } from '@mui/icons-material';
-
 type EditFieldProps = {
   text: string;
   width?: string;
@@ -11,12 +10,12 @@ type EditFieldProps = {
   onCancel?: () => void;
   className?: string;
 };
-
-const Container = styled.div<{ $width?: string }>`
+const Container = styled.div<{
+  $width?: string;
+}>`
   display: flex;
   align-items: center;
 `;
-
 const EditInput = styled.input`
   flex: 1;
   padding: 8px 12px;
@@ -32,20 +31,17 @@ const EditInput = styled.input`
     box-shadow: 0 0 0 1px #3b82f6;
   }
 `;
-
 const DisplayWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 `;
-
 const DisplayText = styled.span`
   cursor: text;
   padding: 4px 0;
   flex: 1;
 `;
-
 const IconButton = styled.button`
   padding: 4px;
   background: none;
@@ -62,7 +58,6 @@ const IconButton = styled.button`
     color: #374151;
   }
 `;
-
 const SaveButton = styled(IconButton)`
   color: #3b82f6;
 
@@ -70,7 +65,6 @@ const SaveButton = styled(IconButton)`
     color: #2563eb;
   }
 `;
-
 export const EditField = ({
   text,
   width,
@@ -82,28 +76,26 @@ export const EditField = ({
 }: EditFieldProps) => {
   const [tempFieldText, setTempFieldText] = useState(text);
   const [editMode, setEditMode] = useState(false);
-
   const activateEditMode = () => {
     setEditMode(true);
     onStartEditMode?.();
   };
-
   const deactivateEditMode = () => {
     setEditMode(false);
     setTempFieldText(text);
     onFinishEditMode?.();
   };
-
   const handleSave = () => {
     onSave?.(tempFieldText);
     setEditMode(false);
   };
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleSave();
-    if (e.key === 'Escape') deactivateEditMode();
+    if (e.key === 'Escape') {
+      onCancel?.();
+      deactivateEditMode();
+    }
   };
-
   return (
     <Container $width={width} className={className}>
       {editMode ? (

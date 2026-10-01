@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { InputField } from '@admiral-ds/react-ui';
 import type { BaseFieldProps } from './types';
-
 export interface FormInputProps extends BaseFieldProps {
   value: string;
   onChange: (value: string) => void;
@@ -9,7 +8,6 @@ export interface FormInputProps extends BaseFieldProps {
   placeholder?: string;
   maxLength?: number;
 }
-
 export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
@@ -45,5 +43,4 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     />
   ),
 );
-
 FormInput.displayName = 'FormInput';

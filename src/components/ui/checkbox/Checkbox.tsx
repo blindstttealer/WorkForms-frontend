@@ -1,7 +1,6 @@
 import React from 'react';
 import { CheckboxProps } from './types';
 import { StyledCheckboxContainer, StyledCheckbox, HelperText, ErrorText } from './styles';
-
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
   helperText,

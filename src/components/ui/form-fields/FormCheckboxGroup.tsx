@@ -2,16 +2,16 @@ import { useCallback } from 'react';
 import { CheckboxField } from '@admiral-ds/react-ui';
 import styled from 'styled-components';
 import type { BaseFieldProps } from './types';
-
-export type CheckboxOption = { label: string; value: string };
-
+export type CheckboxOption = {
+  label: string;
+  value: string;
+};
 export interface FormCheckboxGroupProps extends Omit<BaseFieldProps, 'status'> {
   value: string[];
   onChange: (values: string[]) => void;
   options: CheckboxOption[];
   error?: boolean;
 }
-
 export const FormCheckboxGroup = ({
   value,
   onChange,
@@ -30,7 +30,6 @@ export const FormCheckboxGroup = ({
     },
     [value, onChange],
   );
-
   return (
     <Container className={className}>
       {label && (
@@ -57,29 +56,26 @@ export const FormCheckboxGroup = ({
     </Container>
   );
 };
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
-
 const GroupLabel = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.color['Neutral/Neutral 90']};
 `;
-
 const Required = styled.span`
   color: ${({ theme }) => theme.color['Error/Error 60 Main']};
 `;
-
 const OptionsWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px 24px;
 `;
-
-const HintText = styled.span<{ $error?: boolean }>`
+const HintText = styled.span<{
+  $error?: boolean;
+}>`
   font-size: 12px;
   color: ${({ theme, $error }) =>
     $error ? theme.color['Error/Error 60 Main'] : theme.color['Neutral/Neutral 50']};

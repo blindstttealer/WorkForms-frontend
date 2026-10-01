@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { InputField } from '@admiral-ds/react-ui';
 import { useNavigate } from 'react-router';
+import { paths } from '@/shared/routes';
 import axios from 'axios';
-
 import { RegisterFormData, registerSchema } from './validationSchema';
-import { useUserControllerGetMe, useUserControllerRegister } from '@/api/generated/user/user';
+import { useUserControllerRegister } from '@/api/generated/user/user';
 import { useAppToast } from '@/shared/hooks/useAppToast';
 import {
   PageWrapper,
@@ -22,12 +22,10 @@ import {
   StyledLink,
   SubmitButton,
 } from '../../styles';
-
 export const Register: React.FC = () => {
   const registerMutation = useUserControllerRegister();
   const navigate = useNavigate();
   const { showSuccessToast, showErrorToast } = useAppToast();
-
   const {
     register: registerField,
     handleSubmit,
@@ -36,7 +34,6 @@ export const Register: React.FC = () => {
     resolver: yupResolver(registerSchema),
     mode: 'onChange',
   });
-
   const onSubmit = async (values: RegisterFormData) => {
     try {
       await registerMutation.mutateAsync({
@@ -46,26 +43,21 @@ export const Register: React.FC = () => {
           password: values.password,
         },
       });
-      navigate('/email-confirmation', { state: { email: values.email } });
+      navigate(paths.emailConfirmation, { state: { email: values.email } });
       showSuccessToast('Регистрация прошла успешно', 'Подтверждение');
     } catch (err) {
-      console.error('Registration error', err);
-
       if (axios.isAxiosError(err)) {
         const response = err.response?.data;
         const message = response?.message || err.message || 'Ошибка регистрации';
         showErrorToast(message, 'Ошибка при регистрации');
         return;
       }
-
       showErrorToast('Произошла ошибка. Попробуйте позже.', 'Ошибка');
     }
   };
-
   const handleBackToLogin = () => {
-    navigate('/login');
+    navigate(paths.login);
   };
-
   return (
     <PageWrapper>
       <FormCard>

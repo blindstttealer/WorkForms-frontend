@@ -5,8 +5,7 @@ import Promotion from '../pages/promotion/promotion-page';
 import Favorites from '../pages/favorites/favorites-page';
 import Delivery from '../pages/delivery/delivery-page';
 import Cart from '../pages/cart/cart-page';
-import { CareerWelcome } from '@/features/career-form/ui/career-welcome/CareerWelcome';
-import { CareerForms } from '@/features/career-form/ui/career-forms/CareerForms';
+import { MyFormsPage, MyFormsWelcome } from '@/features/my-forms';
 import LoginPage from '@/pages/auth/LoginPage';
 import RegisterPage from '@/pages/auth/RegistrationPage';
 import EmailConfirmationPage from '@/pages/auth/EmailConfirmationPage';
@@ -14,13 +13,13 @@ import { EmailVerification } from '@/features/auth/ui/authorization-menu/compone
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import FormConstructor from '@/pages/form-constructor/form-constructor-page';
 import { ProfileSettingsPage } from '@/features/profile-settings';
-
+import { routeSegments } from '@/shared/routes';
 export const appRouter = createBrowserRouter([
   {
     path: '/',
     children: [
       {
-        path: 'login',
+        path: routeSegments.login,
         element: (
           <AuthGuard access="guest-only">
             <LoginPage />
@@ -28,7 +27,7 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: 'registration',
+        path: routeSegments.registration,
         element: (
           <AuthGuard access="guest-only">
             <RegisterPage />
@@ -36,7 +35,7 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: 'email-confirmation',
+        path: routeSegments.emailConfirmation,
         element: (
           <AuthGuard access="guest-only">
             <EmailConfirmationPage />
@@ -44,7 +43,7 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: 'email-verification',
+        path: routeSegments.emailVerification,
         element: (
           <AuthGuard access="protected">
             <EmailVerification />
@@ -62,20 +61,20 @@ export const appRouter = createBrowserRouter([
     ),
     children: [
       { index: true, Component: About },
-      { path: 'promotion', Component: Promotion },
+      { path: routeSegments.promotion, Component: Promotion },
       {
-        path: 'careers',
+        path: routeSegments.myForms,
         children: [
-          { index: true, Component: CareerWelcome },
-          { path: 'form/:formId', Component: CareerForms },
+          { index: true, Component: MyFormsWelcome },
+          { path: routeSegments.myFormsForm, Component: MyFormsPage },
         ],
       },
-      { path: 'delivery', Component: Delivery },
-      { path: 'favorites', Component: Favorites },
-      { path: 'about', Component: About },
-      { path: 'form-constructor', Component: FormConstructor },
-      { path: 'cart', Component: Cart },
-      { path: 'settings', Component: ProfileSettingsPage },
+      { path: routeSegments.delivery, Component: Delivery },
+      { path: routeSegments.favorites, Component: Favorites },
+      { path: routeSegments.about, Component: About },
+      { path: routeSegments.formConstructor, Component: FormConstructor },
+      { path: routeSegments.cart, Component: Cart },
+      { path: routeSegments.settings, Component: ProfileSettingsPage },
     ],
   },
 ]);

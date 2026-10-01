@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 const LogoContainer = styled.div`
   width: 32px;
   height: 32px;
@@ -8,5 +7,4 @@ const LogoContainer = styled.div`
   border-radius: 24px;
   margin-right: 16px;
 `;
-
 export const Logo: React.FC = () => <LogoContainer />;
